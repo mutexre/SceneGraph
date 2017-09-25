@@ -1,7 +1,4 @@
 //
-//  Texture.hpp
-//  SceneGraph
-//
 //  Created by mutexre on 04/11/15.
 //  Copyright © 2015 mutexre. All rights reserved.
 //

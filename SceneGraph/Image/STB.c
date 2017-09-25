@@ -1,7 +1,4 @@
 //
-//  STB.c
-//  SceneGraph
-//
 //  Created by mutexre on 11/06/16.
 //  Copyright © 2016 mutexre. All rights reserved.
 //

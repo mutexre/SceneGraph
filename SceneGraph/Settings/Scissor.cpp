@@ -1,7 +1,4 @@
 //
-//  Scissor.cpp
-//  sensee
-//
 //  Created by mutexre on 20/01/2017.
 //  Copyright © 2017 Some Organization. All rights reserved.
 //

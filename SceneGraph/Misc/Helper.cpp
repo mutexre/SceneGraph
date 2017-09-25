@@ -1,7 +1,4 @@
 //
-//  helper.cpp
-//  SceneGraph
-//
 //  Created by mutexre on 09/10/15.
 //  Copyright © 2015 mutexre. All rights reserved.
 //
@@ -189,6 +186,16 @@ Option<SG::Program::Source> SG::readProgramSource(const char* vertex, const char
     return Option<Program::Source>(src);
 }
 
+std::pair<SG::ColorComponents, SG::PixelDataType> SG::splitPixelFormat(PixelFormat format)
+{
+    ColorComponents components;
+    PixelDataType dataType;
+    
+    getPixelFormatComponentsAndDataType(format, components, dataType);
+    
+    return pair<ColorComponents, PixelDataType>(components, dataType);
+}
+
 void SG::getPixelFormatComponentsAndDataType(PixelFormat format,
                                              ColorComponents& components,
                                              PixelDataType& dataType)
@@ -365,8 +372,6 @@ void SG::getPixelFormatComponentsAndDataType(PixelFormat format,
             dataType = PixelDataType::u32;
         break;
         
-// rgba4, rgb5_a1, rgba8, rgba8_snorm, rgb10_a2, rgb10_a2ui, srgb8_alpha8, rgba16f, rgba32f, rgba8i, rgba8ui, rgba16i, rgba16ui, rgba32i, rgba32ui,
-        
         case PixelFormat::rgba4:
             components = ColorComponents::rgba;
             dataType = PixelDataType::u4444;
@@ -392,7 +397,7 @@ void SG::getPixelFormatComponentsAndDataType(PixelFormat format,
             dataType = PixelDataType::u10_10_10_2;
         break;
         
-        case PixelFormat::rgb10_a2ui:
+        case PixelFormat::rgb10_a2_ui:
             components = ColorComponents::rgba;
             dataType = PixelDataType::u10_10_10_2;
         break;
@@ -410,6 +415,41 @@ void SG::getPixelFormatComponentsAndDataType(PixelFormat format,
         case PixelFormat::rgba32f:
             components = ColorComponents::rgba;
             dataType = PixelDataType::f32;
+        break;
+        
+        case PixelFormat::rgba8i:
+            components = ColorComponents::rgba;
+            dataType = PixelDataType::s8;
+        break;
+        
+        case PixelFormat::rgba8ui:
+            components = ColorComponents::rgba;
+            dataType = PixelDataType::u8;
+        break;
+        
+        case PixelFormat::rgba16i:
+            components = ColorComponents::rgba;
+            dataType = PixelDataType::s16;
+        break;
+        
+        case PixelFormat::rgba16ui:
+            components = ColorComponents::rgba;
+            dataType = PixelDataType::u16;
+        break;
+        
+        case PixelFormat::rgba32i:
+            components = ColorComponents::rgba;
+            dataType = PixelDataType::s32;
+        break;
+        
+        case PixelFormat::rgba32ui:
+            components = ColorComponents::rgba;
+            dataType = PixelDataType::u32;
+        break;
+
+        case PixelFormat::alpha:
+            components = ColorComponents::alpha;
+            dataType = PixelDataType::u8;
         break;
         
         case PixelFormat::luminance:
@@ -455,13 +495,99 @@ unsigned char SG::getNumberOfComponents(ColorComponents components)
     return 0;
 }
 
-unsigned char SG::getPixelDataSize(ColorComponents colorComponents, PixelDataType dataType)
+Option<SG::PixelFormat> SG::guessPixelFormat(ColorComponents components, PixelDataType dataType)
+{
+    static map<pair<ColorComponents, PixelDataType>, PixelFormat> pixelFormats;
+    
+    static once_flag once;
+    call_once(once, []
+    {
+        #define add(comp, type, format) \
+            pixelFormats[make_pair(ColorComponents::comp, PixelDataType::type)] = PixelFormat::format
+    
+    // Red
+    
+        add(red, u8, r8);
+        add(red, s8, r8i);
+        add(red, snorm8, r8_snorm);
+        
+        add(red, u16, r16ui);
+        add(red, s16, r16i);
+        add(red, f16, r16f);
+        
+        add(red, u32, r32ui);
+        add(red, s32, r32i);
+        add(red, f32, r32f);
+        
+    // RG
+    
+        add(rg, u8, rg8);
+        add(rg, s8, rg8i);
+        add(rg, snorm8, rg8_snorm);
+        
+        add(rg, u16, rg16ui);
+        add(rg, s16, rg16i);
+        add(rg, f16, rg16f);
+        
+        add(rg, u32, rg32ui);
+        add(rg, s32, rg32i);
+        add(rg, f32, rg32f);
+    
+    // RGB
+    
+        add(rgb, u8, rgb8);
+        add(rgb, s8, rgb8i);
+        add(rgb, snorm8, rgb8_snorm);
+        
+        add(rgb, u16, rgb16ui);
+        add(rgb, s16, rgb16i);
+        add(rgb, f16, rgb16f);
+        
+        add(rgb, u32, rgb32ui);
+        add(rgb, s32, rgb32i);
+        add(rgb, f32, rgb32f);
+        
+        add(rgb, u565, rgb565);
+        add(rgb, u565_rev, rgb565);
+        add(rgb, u332, r3_g3_b2);
+        add(rgb, f9_9_9_5, rgb9_e5);
+        
+    // RGBA
+    
+        add(rgba, u8, rgba8);
+        add(rgba, s8, rgba8i);
+        add(rgba, snorm8, rgba8_snorm);
+        
+        add(rgba, u16, rgba16ui);
+        add(rgba, s16, rgba16i);
+        add(rgba, f16, rgba16f);
+        
+        add(rgba, u32, rgba32ui);
+        add(rgba, s32, rgba32i);
+        add(rgba, f32, rgba32f);
+        
+        add(rgb, u565, rgb565);
+        add(rgb, u565_rev, rgb565);
+        add(rgb, u332, r3_g3_b2);
+        add(rgb, f9_9_9_5, rgb9_e5);
+    
+        #undef add
+    });
+    
+    auto iter = pixelFormats.find(make_pair(components, dataType));
+    if (iter != pixelFormats.end())
+        return iter->second;
+    
+    return Option<PixelFormat>();
+}
+
+unsigned char SG::getPixelDataSize(ColorComponents components, PixelDataType dataType)
 {
     switch (dataType)
     {
         case PixelDataType::u8:
         case PixelDataType::s8:
-            return getNumberOfComponents(colorComponents);
+            return getNumberOfComponents(components);
         
         case PixelDataType::u332:
         case PixelDataType::u233_rev:

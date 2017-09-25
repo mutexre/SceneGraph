@@ -1,7 +1,4 @@
 //
-//  ImagePyramid.hpp
-//  SceneGraph
-//
 //  Created by mutexre on 12/06/16.
 //  Copyright © 2016 mutexre. All rights reserved.
 //
@@ -27,5 +24,5 @@ namespace SG
         const vector<shared_ptr<T>>& getImages() const;
     };
     
-    #include <SceneGraph/Image/ImagePyramidDefinition.hpp>
+    #include <SceneGraph/ImagePyramidDefinition.hpp>
 }

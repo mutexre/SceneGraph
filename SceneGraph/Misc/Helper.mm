@@ -1,7 +1,4 @@
 //
-//  Helper.m
-//  sensee
-//
 //  Created by mutexre on 01/02/2017.
 //  Copyright © 2017 Some Organization. All rights reserved.
 //

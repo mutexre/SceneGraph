@@ -1,7 +1,4 @@
 //
-//  Camera.cpp
-//  SceneGraph
-//
 //  Created by mutexre on 21/10/15.
 //  Copyright © 2015 mutexre. All rights reserved.
 //

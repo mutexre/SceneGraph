@@ -1,46 +1,41 @@
 //
-//  Quad.cpp
-//  SceneGraph
-//
 //  Created by mutexre on 31/10/15.
 //  Copyright © 2015 mutexre. All rights reserved.
 //
 
 #include <SceneGraph/SceneGraph.hpp>
 
-void SG::fillRectVertexAttributes(shared_ptr<Mesh>& mesh,
-                                  unsigned rows,
-                                  unsigned cols,
-                                  bool verticallyFlipUVs)
+void SG::Rect::fillVertexAttributes(shared_ptr<Mesh>& mesh, bool verticallyFlipUVs)
 {
     mesh->setCoordSystem(CoordSystem::cartesian);
     
-    float dx = 2.f / float(cols);
-    float dy = 2.f / float(rows);
-
-    float x;
-    float y = -1.f;
-
     auto& coords = mesh->getCoords();
     auto& normals = mesh->getNormals();
     auto& uvs = mesh->getUVs();
-
-    for (unsigned i = 0; i <= rows; i++)
+    
+    coords.push_back({ -1.f, -1.f, 0.f, 1.f });
+    coords.push_back({  1.f, -1.f, 0.f, 1.f });
+    coords.push_back({ -1.f,  1.f, 0.f, 1.f });
+    coords.push_back({  1.f,  1.f, 0.f, 1.f });
+    
+    normals.push_back({ 0.f, 0.f, 1.f });
+    normals.push_back({ 0.f, 0.f, 1.f });
+    normals.push_back({ 0.f, 0.f, 1.f });
+    normals.push_back({ 0.f, 0.f, 1.f });
+    
+    if (verticallyFlipUVs)
     {
-        x = -1.f;
-        for (unsigned j = 0; j <= cols; j++)
-        {
-            coords.push_back({ x, y, 0.f, 1.f });
-            normals.push_back({ 0.f, 0.f, 1.f });
-            
-            vec2 uv = verticallyFlipUVs ? vec2{ 0.5f * (x + 1.f), 1.f - 0.5f * (y + 1.f) } :
-                                          vec2{ 0.5f * (x + 1.f), 0.5f * (y + 1.f) };
-            uvs.push_back(uv);
-            
-            x += dx;
-        }
-
-        y += dy;
+        uvs.push_back({ 0.f, 0.f });
+        uvs.push_back({ 1.f, 0.f });
+        uvs.push_back({ 0.f, 1.f });
+        uvs.push_back({ 1.f, 1.f });
+    }
+    else
+    {
+        uvs.push_back({ 0.f, 1.f });
+        uvs.push_back({ 1.f, 1.f });
+        uvs.push_back({ 0.f, 0.f });
+        uvs.push_back({ 1.f, 0.f });
     }
     
     mesh->invalidateCoords();
@@ -48,10 +43,7 @@ void SG::fillRectVertexAttributes(shared_ptr<Mesh>& mesh,
     mesh->invalidateUVs();
 }
 
-void SG::fillRectIndices(shared_ptr<Mesh>& mesh,
-                         PrimitivesType primitivesType,
-                         unsigned rows,
-                         unsigned cols)
+void SG::Rect::fillIndices(shared_ptr<Mesh>& mesh, PrimitivesType primitivesType)
 {
     auto& indices = mesh->getIndices();
     
@@ -59,50 +51,29 @@ void SG::fillRectIndices(shared_ptr<Mesh>& mesh,
     {
         case PrimitivesType::triangles:
         {
-            for (int i = 1; i <= rows; i++)
-            {
-                for (int j = 1; j <= cols; j++)
-                {
-                    int a = (rows + 1) * (i - 1) + (j - 1);
-                    int b = (rows + 1) * i + (j - 1);
-                    int c = (rows + 1) * i + j;
-                    int d = (rows + 1) * (i - 1) + j;
-                    
-                    indices.push_back(a);
-                    indices.push_back(b);
-                    indices.push_back(c);
-                    
-                    indices.push_back(a);
-                    indices.push_back(c);
-                    indices.push_back(d);
-                }
-            }
+            indices.push_back(0);
+            indices.push_back(1);
+            indices.push_back(2);
+            
+            indices.push_back(2);
+            indices.push_back(1);
+            indices.push_back(3);
         }
         break;
         
         case PrimitivesType::lines:
         {
-            for (int i = 0; i <= rows; i++)
-            {
-                for (int j = 0; j <= cols; j++)
-                {
-                    int a = (rows + 1) * i + j;
-                    
-                    if (i < rows)
-                    {
-                        int b = (rows + 1) * (i + 1) + j;
-                        indices.push_back(a);
-                        indices.push_back(b);
-                    }
-                    
-                    if (j < cols)
-                    {
-                        int b = (rows + 1) * i + (j + 1);
-                        indices.push_back(a);
-                        indices.push_back(b);
-                    }
-                }
-            }
+            indices.push_back(0);
+            indices.push_back(1);
+            
+            indices.push_back(1);
+            indices.push_back(3);
+            
+            indices.push_back(3);
+            indices.push_back(2);
+            
+            indices.push_back(2);
+            indices.push_back(0);
         }
         break;
         
@@ -114,28 +85,20 @@ void SG::fillRectIndices(shared_ptr<Mesh>& mesh,
     mesh->invalidateIndices();
 }
 
-void SG::makeRectangles(shared_ptr<Mesh>& mesh,
-                        PrimitivesType primitivesType,
-                        unsigned rows,
-                        unsigned cols,
-                        bool verticallyFlipUVs)
+void SG::Rect::make(shared_ptr<Mesh>& mesh,
+                    PrimitivesType primitivesType,
+                    bool verticallyFlipUVs)
 {
-    fillRectVertexAttributes(mesh, rows, cols, verticallyFlipUVs);
-    fillRectIndices(mesh, primitivesType, rows, cols);
+    fillVertexAttributes(mesh, verticallyFlipUVs);
+    fillIndices(mesh, primitivesType);
 }
 
-void SG::strokeRectangles(shared_ptr<Mesh>& mesh,
-                          unsigned rows,
-                          unsigned cols,
-                          bool verticallyFlipUVs)
+void SG::Rect::stroke(shared_ptr<Mesh>& mesh, bool verticallyFlipUVs)
 {
-    makeRectangles(mesh, PrimitivesType::lines, rows, cols, verticallyFlipUVs);
+    make(mesh, PrimitivesType::lines, verticallyFlipUVs);
 }
 
-void SG::fillRectangles(shared_ptr<Mesh>& mesh,
-                        unsigned rows,
-                        unsigned cols,
-                        bool verticallyFlipUVs)
+void SG::Rect::fill(shared_ptr<Mesh>& mesh, bool verticallyFlipUVs)
 {
-    makeRectangles(mesh, PrimitivesType::triangles, rows, cols, verticallyFlipUVs);
+    make(mesh, PrimitivesType::triangles, verticallyFlipUVs);
 }

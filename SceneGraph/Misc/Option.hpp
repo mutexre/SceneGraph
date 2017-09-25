@@ -1,7 +1,4 @@
 //
-//  Option.h
-//  SceneGraph
-//
 //  Created by mutexre on 09/10/15.
 //  Copyright © 2015 mutexre. All rights reserved.
 //

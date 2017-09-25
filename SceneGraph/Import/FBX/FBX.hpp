@@ -1,7 +1,4 @@
 //
-//  FBX.hpp
-//  SceneGraph
-//
 //  Created by mutexre on 01/11/15.
 //  Copyright © 2015 mutexre. All rights reserved.
 //

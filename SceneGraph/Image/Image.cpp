@@ -1,12 +1,9 @@
 //
-//  Image.cpp
-//  SceneGraph
-//
 //  Created by mutexre on 08/01/16.
 //  Copyright © 2016 mutexre. All rights reserved.
 //
 
-#import "SceneGraph.hpp"
+#import <SceneGraph/SceneGraph.hpp>
 #import <stb/stb_image_resize.h>
 
 using namespace SG;
@@ -114,17 +111,24 @@ SG::loadImage(const char* path,
               bool flipHorizontal)
 {
 #ifdef __APPLE__
-    CFUnique<CGDataProvider> dataProvider{ CGDataProviderCreateWithFilename(path), cfDeleter };
-    if (!dataProvider) throw runtime_error(string("Failed to create data provider for image: ") + path);
+    CFUnique<CGDataProvider> dataProvider{
+        CGDataProviderCreateWithFilename(path),
+        cfDeleter
+    };
+    
+    if (!dataProvider)
+        throw runtime_error(string("Failed to create data provider for image: ") + path);
 
     bool isJPG = false;
     
-    char * end = strrchr(path, '.');
+    const char* end = strrchr(path, '.');
     if (strcmp(end, ".jpg") == 0 || strcmp(end, ".jpeg") == 0)
         isJPG = true;
     
     auto _image = (isJPG) ? CGImageCreateWithJPEGDataProvider(dataProvider.get(), nullptr, false, kCGRenderingIntentDefault) : CGImageCreateWithPNGDataProvider(dataProvider.get(), nullptr, false, kCGRenderingIntentDefault);
-    if (!_image) throw runtime_error(string("Failed to load image: ") + path);
+    if (!_image)
+        throw runtime_error(string("Failed to load image: ") + path);
+    
     CFUnique<CGImage> image{ _image, cfDeleter };
 
     CGImageAlphaInfo alphaInfo = CGImageGetAlphaInfo(_image);
@@ -138,8 +142,11 @@ SG::loadImage(const char* path,
     h = static_cast<unsigned>(CGImageGetHeight(image.get()));
     auto data = vector<char>(w * h * bytesPerPixel);
 
-    if (alphaInfo == kCGImageAlphaFirst) alphaInfo = kCGImageAlphaPremultipliedFirst;
-    if (alphaInfo == kCGImageAlphaLast) alphaInfo = kCGImageAlphaPremultipliedLast;
+    if (alphaInfo == kCGImageAlphaFirst)
+        alphaInfo = kCGImageAlphaPremultipliedFirst;
+
+    if (alphaInfo == kCGImageAlphaLast)
+        alphaInfo = kCGImageAlphaPremultipliedLast;
 
     bitmapInfo &= ~kCGBitmapAlphaInfoMask;
     bitmapInfo |= alphaInfo;

@@ -1,7 +1,4 @@
 //
-//  helper.h
-//  SceneGraph
-//
 //  Created by mutexre on 08/10/15.
 //  Copyright © 2015 mutexre. All rights reserved.
 //
@@ -47,6 +44,9 @@ namespace SG
 
     Option<SG::Program::Source> readProgramSource(const char* vertex, const char* fragment);
     shared_ptr<SG::Program> loadProgram(const char* vertexShaderName, const char* fragmentShaderName);
+    
+    std::pair<ColorComponents, PixelDataType> splitPixelFormat(PixelFormat);
+    Option<PixelFormat> guessPixelFormat(ColorComponents, PixelDataType);
     
     void getPixelFormatComponentsAndDataType(PixelFormat, ColorComponents&, PixelDataType&);
     unsigned char getNumberOfComponents(ColorComponents);

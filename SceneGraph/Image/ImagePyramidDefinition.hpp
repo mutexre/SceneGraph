@@ -1,7 +1,4 @@
 //
-//  ImagePyramid.cpp
-//  SceneGraph
-//
 //  Created by mutexre on 12/06/16.
 //  Copyright © 2016 mutexre. All rights reserved.
 //
@@ -22,9 +19,9 @@ ImagePyramid<T>::~ImagePyramid()
 template <typename T>
 unsigned ImagePyramid<T>::calcNumberOfLevels(const shared_ptr<T>& image)
 {
-    auto w = image->getW();
-    auto h = image->getH();
-    auto minDim = min(w, h);
+    int w = image->getW();
+    int h = image->getH();
+    auto minDim = std::min(w, h);
     
     unsigned reminder = minDim;
     unsigned log2 = 0;

@@ -1,7 +1,4 @@
 //
-//  SceneGraph.h
-//  SceneGraph
-//
 //  Created by mutexre on 21/10/15.
 //  Copyright © 2015 mutexre. All rights reserved.
 //
@@ -56,16 +53,17 @@ namespace SG
 }
 
 #include <SceneGraph/Object.hpp>
+#include <SceneGraph/Option.hpp>
+#include <SceneGraph/Either.hpp>
 #include <SceneGraph/Types.hpp>
+#include <SceneGraph/PixelFormat.hpp>
 #include <SceneGraph/Log.hpp>
-#include <SceneGraph/Misc/Option.hpp>
-#include <SceneGraph/Misc/Either.hpp>
-#include <SceneGraph/Settings/Settings.hpp>
+#include <SceneGraph/Settings.hpp>
 #include <SceneGraph/Texture.hpp>
 #include <SceneGraph/Program.hpp>
-#include <SceneGraph/Misc/Helper.hpp>
-#include <SceneGraph/Misc/Text.hpp>
-#include <SceneGraph/Surface/Surface.hpp>
+#include <SceneGraph/Helper.hpp>
+#include <SceneGraph/Text.hpp>
+#include <SceneGraph/Surface.hpp>
 #include <SceneGraph/Context.hpp>
 #include <SceneGraph/Scene.hpp>
 #include <SceneGraph/Node.hpp>
@@ -73,18 +71,21 @@ namespace SG
 #include <SceneGraph/Camera.hpp>
 #include <SceneGraph/Light.hpp>
 #include <SceneGraph/Mesh.hpp>
-#include <SceneGraph/Material/Material.hpp>
-#include <SceneGraph/Material/PhongMaterial.hpp>
-#include <SceneGraph/Material/ColorMaterial.hpp>
-#include <SceneGraph/Material/TextureMaterial.hpp>
-#include <SceneGraph/Material/TextureMaterialRGBA.hpp>
-#include <SceneGraph/Material/TextureMaterialYUV.hpp>
-#include <SceneGraph/Material/TextureMaterialYUVA.hpp>
-#include <SceneGraph/Image/Image.hpp>
-#include <SceneGraph/Image/Image3D.hpp>
-#include <SceneGraph/Image/ImagePyramid.hpp>
-#include <SceneGraph/Mesh/Rectangle.hpp>
-//#include <SceneGraph/Mesh/Cube.hpp>
-//#include <SceneGraph/Mesh/Sphere.hpp>
+#include <SceneGraph/Material.hpp>
+#include <SceneGraph/ColorMaterial.hpp>
+#include <SceneGraph/TextureMaterial.hpp>
+#include <SceneGraph/TextureMaterialRGBA.hpp>
+#include <SceneGraph/TextureMaterialYUV.hpp>
+#include <SceneGraph/TextureMaterialYUVA.hpp>
+#include <SceneGraph/PhongMaterial.hpp>
+#include <SceneGraph/SkyboxMaterial.hpp>
+#include <SceneGraph/Image.hpp>
+#include <SceneGraph/Image3D.hpp>
+#include <SceneGraph/ImagePyramid.hpp>
+#include <SceneGraph/Rectangle.hpp>
+#include <SceneGraph/Cube.hpp>
+#include <SceneGraph/CartesianGrid2D.hpp>
+#include <SceneGraph/CartesianGrid3D.hpp>
+//#include <SceneGraph/Sphere.hpp>
 #include <SceneGraph/Transform.hpp>
-#include <SceneGraph/Surface/Renderbuffer.hpp>
+#include <SceneGraph/Renderbuffer.hpp>

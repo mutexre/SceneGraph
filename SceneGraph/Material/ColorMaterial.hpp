@@ -1,7 +1,4 @@
 //
-//  SkyboxMaterial.hpp
-//  SceneGraph
-//
 //  Created by mutexre on 05/11/15.
 //  Copyright © 2015 mutexre. All rights reserved.
 //

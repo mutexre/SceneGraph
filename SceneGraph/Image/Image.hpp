@@ -1,7 +1,4 @@
 //
-//  Image.hpp
-//  SceneGraph
-//
 //  Created by mutexre on 08/01/16.
 //  Copyright © 2016 mutexre. All rights reserved.
 //

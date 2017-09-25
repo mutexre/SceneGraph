@@ -1,7 +1,4 @@
 //
-//  Transform.h
-//  shitter
-//
 //  Created by mutexre on 18/09/16.
 //  Copyright © 2016 Some Organization. All rights reserved.
 //

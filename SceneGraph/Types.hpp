@@ -1,3 +1,8 @@
+//
+//  Created by mutexre on 21/10/15.
+//  Copyright © 2015 mutexre. All rights reserved.
+//
+
 namespace SG
 {
     enum class CoordSystem {
@@ -7,7 +12,7 @@ namespace SG
     };
     
     enum class PrimitivesType {
-        points, lines, triangles
+        points = 0, lines, triangles
     };
     
     enum class BufferBit : int
@@ -34,26 +39,49 @@ namespace SG
         u16, s16,
         u32, s32,
         f16, f32,
-        snorm8,
+        snorm8, snorm16,
         u332, u233_rev,
         u565, u565_rev,
         u4444, u4444_rev,
         u5551, u1555_rev,
         u8888, u8888_rev,
         u10_10_10_2, u2_10_10_10_rev,
-        u24_8,
+        u24_u8, f32_u8,
         f11_f11_f10,
+        f9_9_9_5,
         f5_9_9_9_rev
     };
 
     enum class PixelFormat
     {
-        r8, r8_snorm, r16f, r32f, r8i, r8ui, r16i, r16ui, r32i, r32ui,
-        rg8, rg8_snorm, rg16f, rg32f, rg8i, rg8ui, rg16i, rg16ui, rg32i, rg32ui,
-        rgb8, rgb8_snorm, rgb565, srgb8, rgb16f, rgb32f, r11f_g11f_b10f, rgb9_e5, rgb8i, rgb8ui, rgb16i, rgb16ui, rgb32i, rgb32ui,
-        rgba4, rgb5_a1, rgba8, rgba8_snorm, rgb10_a2, rgb10_a2ui, srgb8_alpha8, rgba16f, rgba32f, rgba8i, rgba8ui, rgba16i, rgba16ui, rgba32i, rgba32ui,
+    // R
+        r8, r8i, r8ui, r8_snorm,      // 8-bit
+        r16i, r16ui, r16f, r16_snorm, // 16-bit
+        r32i, r32ui, r32f,            // 32-bit
+        
+    // RG
+        rg8, rg8i, rg8ui, rg8_snorm,      //  8-bit per component
+        rg16, rg16i, rg16ui, rg16f, rg16_snorm, // 16-bit per component
+        rg32i, rg32ui, rg32f,             // 32-bit per component
+        
+    // RGB
+        rgb8, srgb8, rgb8i, rgb8ui, rgb8_snorm,    //  8-bit per component
+        rgb16i, rgb16ui, rgb16f, rgb16_snorm,      // 16-bit per component
+        rgb32i, rgb32ui, rgb32f,                   // 32-bit per component
+        rgb4, rgb5, rgb10, rgb12,
+        r3_g3_b2, rgb565, r11f_g11f_b10f, rgb9_e5,
+        
+    // RGBA
+        rgba8, srgb8_alpha8, rgba8i, rgba8ui, rgba8_snorm, //  8-bit per component
+        rgba16i, rgba16ui, rgba16f, rgba16_snorm,          // 16-bit per component
+        rgba32i, rgba32ui, rgba32f,                        // 32-bit per component
+        rgba2, rgba4, rgb5_a1, rgb10_a2, rgb10_a2_ui,
+        
+    // Other
         alpha,
         luminance,
-        luminance_alpha
+        luminance_alpha,
+        depth16, depth24, depth32, depth32f,
+        depth24_stencil8, depth32f_stencil8
     };
 }

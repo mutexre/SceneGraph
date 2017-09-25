@@ -1,12 +1,9 @@
 //
-//  Image.cpp
-//  SceneGraph
-//
 //  Created by mutexre on 08/01/16.
 //  Copyright © 2016 mutexre. All rights reserved.
 //
 
-#import "SceneGraph.hpp"
+#import <SceneGraph/SceneGraph.hpp>
 
 using namespace SG;
 

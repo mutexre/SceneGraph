@@ -1,38 +1,21 @@
 //
-//  Quad.hpp
-//  SceneGraph
-//
 //  Created by mutexre on 31/10/15.
 //  Copyright © 2015 mutexre. All rights reserved.
 //
 
 #pragma once
 
-namespace SG
+namespace SG::Rect
 {
-    void fillRectVertexAttributes(shared_ptr<Mesh>&,
-                                  unsigned rows = 1,
-                                  unsigned cols = 1,
-                                  bool verticallyFlipUVs = true);
+    void fillVertexAttributes(shared_ptr<Mesh>&, bool verticallyFlipUVs = true);
 
-    void fillRectIndices(shared_ptr<Mesh>&,
-                         PrimitivesType,
-                         unsigned rows = 1,
-                         unsigned cols = 1);
+    void fillIndices(shared_ptr<Mesh>&, PrimitivesType);
 
-    void makeRectangles(shared_ptr<Mesh>&,
-                        PrimitivesType,
-                        unsigned rows = 1,
-                        unsigned cols = 1,
-                        bool verticallyFlipUVs = true);
+    void make(shared_ptr<Mesh>&,
+              PrimitivesType,
+              bool verticallyFlipUVs = true);
     
-    void strokeRectangles(shared_ptr<Mesh>&,
-                          unsigned rows = 1,
-                          unsigned cols = 1,
-                          bool verticallyFlipUVs = true);
+    void stroke(shared_ptr<Mesh>&, bool verticallyFlipUVs = true);
     
-    void fillRectangles(shared_ptr<Mesh>&,
-                        unsigned rows = 1,
-                        unsigned cols = 1,
-                        bool verticallyFlipUVs = true);
+    void fill(shared_ptr<Mesh>&, bool verticallyFlipUVs = true);
 }

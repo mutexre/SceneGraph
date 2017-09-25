@@ -1,7 +1,4 @@
 //
-//  Settings.cpp
-//  sensee
-//
 //  Created by mutexre on 09/11/2016.
 //  Copyright © 2016 Some Organization. All rights reserved.
 //

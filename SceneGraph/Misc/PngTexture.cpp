@@ -1,7 +1,4 @@
 //
-//  PngTexture.cpp
-//  SceneGraph
-//
 //  Created by mutexre on 15/10/15.
 //  Copyright © 2015 mutexre. All rights reserved.
 //

@@ -1,7 +1,4 @@
 //
-//  Light.h
-//  SceneGraph
-//
 //  Created by mutexre on 14/10/15.
 //  Copyright © 2015 mutexre. All rights reserved.
 //

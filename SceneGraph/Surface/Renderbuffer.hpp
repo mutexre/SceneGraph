@@ -1,7 +1,4 @@
 //
-//  Renderbuffer.hpp
-//  sensee
-//
 //  Created by mutexre on 21/10/2016.
 //  Copyright © 2016 Some Organization. All rights reserved.
 //

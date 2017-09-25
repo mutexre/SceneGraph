@@ -1,7 +1,4 @@
 //
-//  Surface.hpp
-//  sensee
-//
 //  Created by mutexre on 18/10/2016.
 //  Copyright © 2016 Some Organization. All rights reserved.
 //
