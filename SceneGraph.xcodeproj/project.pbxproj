@@ -211,7 +211,7 @@
 				922D2E5B1EAB511600453248 /* MeshNode.hpp */,
 				922D2E5A1EAB511600453248 /* MeshNode.cpp */,
 			);
-			name = Node;
+			path = Node;
 			sourceTree = "<group>";
 		};
 		922D2E941EABFEE100453248 /* Grid */ = {
@@ -228,7 +228,7 @@
 		92E46A061EA1E605007ADAB1 = {
 			isa = PBXGroup;
 			children = (
-				92E46A281EA1E6CC007ADAB1 /* Source */,
+				92E46A281EA1E6CC007ADAB1 /* SceneGraph */,
 				92E46B271EA1E859007ADAB1 /* Platform */,
 				92E46A131EA1E662007ADAB1 /* Products */,
 				92E46C211EA22E41007ADAB1 /* Frameworks */,
@@ -243,7 +243,7 @@
 			name = Products;
 			sourceTree = "<group>";
 		};
-		92E46A281EA1E6CC007ADAB1 /* Source */ = {
+		92E46A281EA1E6CC007ADAB1 /* SceneGraph */ = {
 			isa = PBXGroup;
 			children = (
 				922D269B1EA7FC4000453248 /* Node */,
@@ -270,27 +270,25 @@
 				92E46B831EA22995007ADAB1 /* Transform.hpp */,
 				92E46B821EA22995007ADAB1 /* Transform.cpp */,
 			);
-			name = Source;
-			path = src;
+			path = SceneGraph;
 			sourceTree = "<group>";
 		};
 		92E46B271EA1E859007ADAB1 /* Platform */ = {
 			isa = PBXGroup;
 			children = (
 				92E46B2A1EA22855007ADAB1 /* Apple */,
-				92E46B291EA1E894007ADAB1 /* SceneGraph.podspec */,
 			);
-			name = Platform;
+			path = Platform;
 			sourceTree = "<group>";
 		};
 		92E46B2A1EA22855007ADAB1 /* Apple */ = {
 			isa = PBXGroup;
 			children = (
 				922D27261EA9025F00453248 /* Info.plist */,
+				92E46B291EA1E894007ADAB1 /* SceneGraph.podspec */,
 				922D27271EA9025F00453248 /* SceneGraph Framework.h */,
 			);
-			name = Apple;
-			path = other/iOS;
+			path = Apple;
 			sourceTree = "<group>";
 		};
 		92E46B321EA22995007ADAB1 /* Image */ = {
