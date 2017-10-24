@@ -616,3 +616,32 @@ unsigned char SG::getPixelDataSize(ColorComponents components, PixelDataType dat
     }
     return 0;
 }
+
+shared_ptr<SG::Texture> SG::createCubemapTexture(const shared_ptr<Context> context,
+                                                 const shared_ptr<ImageStack>& cubemap,
+                                                 bool nativeMipmaps)
+{
+    auto texture = context->createTexture();
+    
+    auto pixelFormat = guessPixelFormat(cubemap->getColorComponents(), cubemap->getPixelDataType());
+    if (pixelFormat)
+    {
+        if (!nativeMipmaps)
+        {
+            texture->init(Texture::Type::cubemap, pixelFormat.value);
+            
+            auto cubemapPyramid = make_shared<ImagePyramid<ImageStack>>(cubemap);
+            texture->setImages(cubemapPyramid);
+        }
+        else
+        {
+            texture->init(Texture::Type::cubemap, pixelFormat.value);
+            texture->setImage(cubemap);
+            
+            texture->bind();
+            texture->generateMipmap();
+        }
+    }
+    
+    return texture;
+}

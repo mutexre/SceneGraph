@@ -17,7 +17,7 @@ bool Context::init()
     return true;
 }
 
-Context::OS Context::getOS() const {
+OS Context::getOS() const {
     return os;
 }
 

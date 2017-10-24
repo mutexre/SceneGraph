@@ -10,8 +10,8 @@ namespace SG
               unsigned& w, unsigned& h, unsigned& bytesPerRow,
               ColorComponents& colorComponents,
               PixelDataType& pixelDataType,
-              bool flipVertical = true,
-              bool flipHorizontal = false);
+              bool flipVertical,
+              bool flipHorizontal);
 
     class Image
     {
@@ -47,8 +47,8 @@ namespace SG
 
     public:
         Image();
-        Image(const char* path);
-        Image(const string& path);
+        Image(const char* path, bool flipVertical, bool flipHorizontal);
+        Image(const string& path, bool flipVertical, bool flipHorizontal);
         
         Image(char* data, int w, int h,
               ColorComponents, PixelDataType,

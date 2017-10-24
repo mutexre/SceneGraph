@@ -11,15 +11,15 @@ using namespace SG;
 Image::Image()
 {}
 
-Image::Image(const char* path)
+Image::Image(const char* path, bool flipVertical, bool flipHorizontal)
 {
     storage.type = StorageType::internal;
-    storage.internal = loadImage(path, w, h, bytesPerRow, components, dataType);
+    storage.internal = loadImage(path, w, h, bytesPerRow, components, dataType, flipVertical, flipHorizontal);
     data = storage.internal.data();
 }
 
-Image::Image(const string& path)
-    : Image(path.c_str())
+Image::Image(const string& path, bool flipVertical, bool flipHorizontal)
+    : Image(path.c_str(), flipVertical, flipHorizontal)
 {}
 
 Image::Image(char* data, int w, int h,

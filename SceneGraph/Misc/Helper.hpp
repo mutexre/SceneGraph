@@ -43,7 +43,6 @@ namespace SG
 #endif
 
     Option<SG::Program::Source> readProgramSource(const char* vertex, const char* fragment);
-    shared_ptr<SG::Program> loadProgram(const char* vertexShaderName, const char* fragmentShaderName);
     
     std::pair<ColorComponents, PixelDataType> splitPixelFormat(PixelFormat);
     Option<PixelFormat> guessPixelFormat(ColorComponents, PixelDataType);
@@ -53,4 +52,8 @@ namespace SG
     unsigned char getPixelDataSize(ColorComponents, PixelDataType);
     
     double getTime(); // seconds since the beginning of 1970 (with at least milliseconds precision)
+    
+    shared_ptr<Texture> createCubemapTexture(const shared_ptr<Context> context,
+                                             const shared_ptr<ImageStack>& cubemap,
+                                             bool nativeMipmaps);
 }

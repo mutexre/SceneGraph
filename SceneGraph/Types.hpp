@@ -5,6 +5,14 @@
 
 namespace SG
 {
+    enum class OS {
+        ios,
+        macOS,
+        android,
+        windows,
+        linux
+    };
+    
     enum class CoordSystem {
         cartesian,
         spherical,

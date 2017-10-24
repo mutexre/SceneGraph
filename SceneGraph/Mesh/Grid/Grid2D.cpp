@@ -5,9 +5,9 @@
 
 #include <SceneGraph/SceneGraph.hpp>
 
-void SG::CartesianGrid2D::fillVertexAttributes(shared_ptr<Mesh>& mesh,
-                                               uvec2 dims,
-                                               bool verticallyFlipUVs)
+void SG::Grid2D::fillVertexAttributes(shared_ptr<Mesh>& mesh,
+                                      uvec2 dims,
+                                      bool verticallyFlipUVs)
 {
     mesh->setCoordSystem(CoordSystem::cartesian);
     
@@ -45,9 +45,9 @@ void SG::CartesianGrid2D::fillVertexAttributes(shared_ptr<Mesh>& mesh,
     mesh->invalidateUVs();
 }
 
-void SG::CartesianGrid2D::fillIndices(shared_ptr<Mesh>& mesh,
-                                      PrimitivesType primitivesType,
-                                      uvec2 dims)
+void SG::Grid2D::fillIndices(shared_ptr<Mesh>& mesh,
+                             PrimitivesType primitivesType,
+                             uvec2 dims)
 {
     auto& indices = mesh->getIndices();
     
@@ -110,25 +110,25 @@ void SG::CartesianGrid2D::fillIndices(shared_ptr<Mesh>& mesh,
     mesh->invalidateIndices();
 }
 
-void SG::CartesianGrid2D::make(shared_ptr<Mesh>& mesh,
-                               PrimitivesType primitivesType,
-                               uvec2 dims,
-                               bool verticallyFlipUVs)
+void SG::Grid2D::make(shared_ptr<Mesh>& mesh,
+                      PrimitivesType primitivesType,
+                      uvec2 dims,
+                      bool verticallyFlipUVs)
 {
     fillVertexAttributes(mesh, dims, verticallyFlipUVs);
     fillIndices(mesh, primitivesType, dims);
 }
 
-void SG::CartesianGrid2D::stroke(shared_ptr<Mesh>& mesh,
-                                 uvec2 dims,
-                                 bool verticallyFlipUVs)
+void SG::Grid2D::stroke(shared_ptr<Mesh>& mesh,
+                        uvec2 dims,
+                        bool verticallyFlipUVs)
 {
     make(mesh, PrimitivesType::lines, dims, verticallyFlipUVs);
 }
 
-void SG::CartesianGrid2D::fill(shared_ptr<Mesh>& mesh,
-                               uvec2 dims,
-                               bool verticallyFlipUVs)
+void SG::Grid2D::fill(shared_ptr<Mesh>& mesh,
+                      uvec2 dims,
+                      bool verticallyFlipUVs)
 {
     make(mesh, PrimitivesType::triangles, dims, verticallyFlipUVs);
 }

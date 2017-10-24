@@ -23,8 +23,8 @@ void Texture::setImage(const shared_ptr<Image>& image) {
     setImages(images);
 }
 
-void Texture::setImage(const shared_ptr<Image3D>& image) {
-    vector<shared_ptr<Image3D>> images{ image };
+void Texture::setImage(const shared_ptr<ImageStack>& image) {
+    vector<shared_ptr<ImageStack>> images{ image };
     setImages(images);
 }
 

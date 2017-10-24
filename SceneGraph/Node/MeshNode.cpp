@@ -75,8 +75,8 @@ void MeshNode::draw(const shared_ptr<Scene>& scene, const shared_ptr<Camera>& ca
             if (material->isParameterActive("viewNormalMatrix"))
                 material->set("viewNormalMatrix", viewNormalMatrix);
             
-            if (material->isParameterActive("viewMatrix"))
-                material->set("viewMatrix", viewMatrix);
+            if (material->isParameterActive("view.matrix"))
+                material->set("view.matrix", viewMatrix);
             
             if (material->isParameterActive("projectionMatrix"))
                 material->set("projectionMatrix", projectionMatrix);

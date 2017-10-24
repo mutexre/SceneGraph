@@ -9,15 +9,6 @@ namespace SG
 {
     class Context : public enable_shared_from_this<Context>
     {
-    public:
-        enum class OS {
-            ios,
-            macOS,
-            android,
-            windows,
-            linux
-        };
-    
     protected:
         map<string, shared_ptr<Program>> programs;
         Settings settings;

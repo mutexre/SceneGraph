@@ -36,7 +36,7 @@ namespace SG
     class Material;
     class Program;
     class Image;
-    class Image3D;
+    class ImageStack;
     class ImageFX;
     class ImageFX3D;
     class Texture;
@@ -80,12 +80,12 @@ namespace SG
 #include <SceneGraph/PhongMaterial.hpp>
 #include <SceneGraph/SkyboxMaterial.hpp>
 #include <SceneGraph/Image.hpp>
-#include <SceneGraph/Image3D.hpp>
+#include <SceneGraph/ImageStack.hpp>
 #include <SceneGraph/ImagePyramid.hpp>
 #include <SceneGraph/Rectangle.hpp>
 #include <SceneGraph/Cube.hpp>
-#include <SceneGraph/CartesianGrid2D.hpp>
-#include <SceneGraph/CartesianGrid3D.hpp>
+#include <SceneGraph/Grid2D.hpp>
+#include <SceneGraph/Grid3D.hpp>
 //#include <SceneGraph/Sphere.hpp>
 #include <SceneGraph/Transform.hpp>
 #include <SceneGraph/Renderbuffer.hpp>

@@ -5,7 +5,7 @@
 
 #pragma once
 
-namespace SG::CartesianGrid2D
+namespace SG::Grid2D
 {
     void fillVertexAttributes(shared_ptr<Mesh>&,
                               uvec2 dims = uvec2(1),

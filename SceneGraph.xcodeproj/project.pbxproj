@@ -24,16 +24,17 @@
 		922D2E7B1EAB595400453248 /* PixelFormat.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 922D2E7A1EAB595400453248 /* PixelFormat.cpp */; };
 		922D2E8E1EAB5F5200453248 /* SkyboxMaterial.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 922D2E8C1EAB5F5200453248 /* SkyboxMaterial.cpp */; };
 		922D2E8F1EAB5F5200453248 /* SkyboxMaterial.hpp in Headers */ = {isa = PBXBuildFile; fileRef = 922D2E8D1EAB5F5200453248 /* SkyboxMaterial.hpp */; settings = {ATTRIBUTES = (Public, ); }; };
-		922D2E921EABFEDC00453248 /* CartesianGrid2D.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 922D2E901EABFEDC00453248 /* CartesianGrid2D.cpp */; };
-		922D2E931EABFEDC00453248 /* CartesianGrid2D.hpp in Headers */ = {isa = PBXBuildFile; fileRef = 922D2E911EABFEDC00453248 /* CartesianGrid2D.hpp */; settings = {ATTRIBUTES = (Public, ); }; };
-		922D2E971EABFEFF00453248 /* CartesianGrid3D.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 922D2E951EABFEFF00453248 /* CartesianGrid3D.cpp */; };
-		922D2E981EABFEFF00453248 /* CartesianGrid3D.hpp in Headers */ = {isa = PBXBuildFile; fileRef = 922D2E961EABFEFF00453248 /* CartesianGrid3D.hpp */; settings = {ATTRIBUTES = (Public, ); }; };
+		922D2E921EABFEDC00453248 /* Grid2D.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 922D2E901EABFEDC00453248 /* Grid2D.cpp */; };
+		922D2E931EABFEDC00453248 /* Grid2D.hpp in Headers */ = {isa = PBXBuildFile; fileRef = 922D2E911EABFEDC00453248 /* Grid2D.hpp */; settings = {ATTRIBUTES = (Public, ); }; };
+		922D2E971EABFEFF00453248 /* Grid3D.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 922D2E951EABFEFF00453248 /* Grid3D.cpp */; };
+		922D2E981EABFEFF00453248 /* Grid3D.hpp in Headers */ = {isa = PBXBuildFile; fileRef = 922D2E961EABFEFF00453248 /* Grid3D.hpp */; settings = {ATTRIBUTES = (Public, ); }; };
+		92D44D581F8A390E005204DB /* Cube.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 92E46B561EA22995007ADAB1 /* Cube.cpp */; };
 		92E46B891EA22995007ADAB1 /* Context.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 92E46B301EA22995007ADAB1 /* Context.cpp */; };
 		92E46B8B1EA22995007ADAB1 /* Context.hpp in Headers */ = {isa = PBXBuildFile; fileRef = 92E46B311EA22995007ADAB1 /* Context.hpp */; settings = {ATTRIBUTES = (Public, ); }; };
 		92E46B8D1EA22995007ADAB1 /* Image.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 92E46B331EA22995007ADAB1 /* Image.cpp */; };
 		92E46B8F1EA22995007ADAB1 /* Image.hpp in Headers */ = {isa = PBXBuildFile; fileRef = 92E46B341EA22995007ADAB1 /* Image.hpp */; settings = {ATTRIBUTES = (Public, ); }; };
-		92E46B911EA22995007ADAB1 /* Image3D.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 92E46B351EA22995007ADAB1 /* Image3D.cpp */; };
-		92E46B931EA22995007ADAB1 /* Image3D.hpp in Headers */ = {isa = PBXBuildFile; fileRef = 92E46B361EA22995007ADAB1 /* Image3D.hpp */; settings = {ATTRIBUTES = (Public, ); }; };
+		92E46B911EA22995007ADAB1 /* ImageStack.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 92E46B351EA22995007ADAB1 /* ImageStack.cpp */; };
+		92E46B931EA22995007ADAB1 /* ImageStack.hpp in Headers */ = {isa = PBXBuildFile; fileRef = 92E46B361EA22995007ADAB1 /* ImageStack.hpp */; settings = {ATTRIBUTES = (Public, ); }; };
 		92E46B951EA22995007ADAB1 /* ImagePyramid.hpp in Headers */ = {isa = PBXBuildFile; fileRef = 92E46B371EA22995007ADAB1 /* ImagePyramid.hpp */; settings = {ATTRIBUTES = (Public, ); }; };
 		92E46B971EA22995007ADAB1 /* ImagePyramidDefinition.hpp in Headers */ = {isa = PBXBuildFile; fileRef = 92E46B381EA22995007ADAB1 /* ImagePyramidDefinition.hpp */; settings = {ATTRIBUTES = (Public, ); }; };
 		92E46B991EA22995007ADAB1 /* STB.c in Sources */ = {isa = PBXBuildFile; fileRef = 92E46B391EA22995007ADAB1 /* STB.c */; };
@@ -55,7 +56,6 @@
 		92E46BC51EA22995007ADAB1 /* TextureMaterialYUVA.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 92E46B531EA22995007ADAB1 /* TextureMaterialYUVA.cpp */; };
 		92E46BC71EA22995007ADAB1 /* TextureMaterialYUVA.hpp in Headers */ = {isa = PBXBuildFile; fileRef = 92E46B541EA22995007ADAB1 /* TextureMaterialYUVA.hpp */; settings = {ATTRIBUTES = (Public, ); }; };
 		92E46BCB1EA22995007ADAB1 /* Cube.hpp in Headers */ = {isa = PBXBuildFile; fileRef = 92E46B571EA22995007ADAB1 /* Cube.hpp */; settings = {ATTRIBUTES = (Public, ); }; };
-		92E46BCD1EA22995007ADAB1 /* Ellipse.hpp in Headers */ = {isa = PBXBuildFile; fileRef = 92E46B581EA22995007ADAB1 /* Ellipse.hpp */; settings = {ATTRIBUTES = (Public, ); }; };
 		92E46BCF1EA22995007ADAB1 /* Rectangle.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 92E46B591EA22995007ADAB1 /* Rectangle.cpp */; };
 		92E46BD11EA22995007ADAB1 /* Rectangle.hpp in Headers */ = {isa = PBXBuildFile; fileRef = 92E46B5A1EA22995007ADAB1 /* Rectangle.hpp */; settings = {ATTRIBUTES = (Public, ); }; };
 		92E46BDF1EA22995007ADAB1 /* Either.hpp in Headers */ = {isa = PBXBuildFile; fileRef = 92E46B621EA22995007ADAB1 /* Either.hpp */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -110,18 +110,18 @@
 		922D2E7A1EAB595400453248 /* PixelFormat.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = PixelFormat.cpp; path = SceneGraph/PixelFormat.cpp; sourceTree = SOURCE_ROOT; };
 		922D2E8C1EAB5F5200453248 /* SkyboxMaterial.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = SkyboxMaterial.cpp; sourceTree = "<group>"; };
 		922D2E8D1EAB5F5200453248 /* SkyboxMaterial.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = SkyboxMaterial.hpp; sourceTree = "<group>"; };
-		922D2E901EABFEDC00453248 /* CartesianGrid2D.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = CartesianGrid2D.cpp; path = Grid/CartesianGrid2D.cpp; sourceTree = "<group>"; };
-		922D2E911EABFEDC00453248 /* CartesianGrid2D.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = CartesianGrid2D.hpp; path = Grid/CartesianGrid2D.hpp; sourceTree = "<group>"; };
-		922D2E951EABFEFF00453248 /* CartesianGrid3D.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = CartesianGrid3D.cpp; path = Grid/CartesianGrid3D.cpp; sourceTree = "<group>"; };
-		922D2E961EABFEFF00453248 /* CartesianGrid3D.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = CartesianGrid3D.hpp; path = Grid/CartesianGrid3D.hpp; sourceTree = "<group>"; };
+		922D2E901EABFEDC00453248 /* Grid2D.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = Grid2D.cpp; path = Grid/Grid2D.cpp; sourceTree = "<group>"; };
+		922D2E911EABFEDC00453248 /* Grid2D.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = Grid2D.hpp; path = Grid/Grid2D.hpp; sourceTree = "<group>"; };
+		922D2E951EABFEFF00453248 /* Grid3D.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = Grid3D.cpp; path = Grid/Grid3D.cpp; sourceTree = "<group>"; };
+		922D2E961EABFEFF00453248 /* Grid3D.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = Grid3D.hpp; path = Grid/Grid3D.hpp; sourceTree = "<group>"; };
 		92E46A121EA1E662007ADAB1 /* SceneGraph.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = SceneGraph.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		92E46B291EA1E894007ADAB1 /* SceneGraph.podspec */ = {isa = PBXFileReference; lastKnownFileType = text; path = SceneGraph.podspec; sourceTree = "<group>"; };
 		92E46B301EA22995007ADAB1 /* Context.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = Context.cpp; path = SceneGraph/Context.cpp; sourceTree = SOURCE_ROOT; };
 		92E46B311EA22995007ADAB1 /* Context.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = Context.hpp; path = SceneGraph/Context.hpp; sourceTree = SOURCE_ROOT; };
 		92E46B331EA22995007ADAB1 /* Image.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Image.cpp; sourceTree = "<group>"; };
 		92E46B341EA22995007ADAB1 /* Image.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = Image.hpp; sourceTree = "<group>"; };
-		92E46B351EA22995007ADAB1 /* Image3D.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Image3D.cpp; sourceTree = "<group>"; };
-		92E46B361EA22995007ADAB1 /* Image3D.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = Image3D.hpp; sourceTree = "<group>"; };
+		92E46B351EA22995007ADAB1 /* ImageStack.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ImageStack.cpp; sourceTree = "<group>"; };
+		92E46B361EA22995007ADAB1 /* ImageStack.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = ImageStack.hpp; sourceTree = "<group>"; };
 		92E46B371EA22995007ADAB1 /* ImagePyramid.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = ImagePyramid.hpp; sourceTree = "<group>"; };
 		92E46B381EA22995007ADAB1 /* ImagePyramidDefinition.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = ImagePyramidDefinition.hpp; sourceTree = "<group>"; };
 		92E46B391EA22995007ADAB1 /* STB.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = STB.c; sourceTree = "<group>"; };
@@ -217,10 +217,10 @@
 		922D2E941EABFEE100453248 /* Grid */ = {
 			isa = PBXGroup;
 			children = (
-				922D2E911EABFEDC00453248 /* CartesianGrid2D.hpp */,
-				922D2E901EABFEDC00453248 /* CartesianGrid2D.cpp */,
-				922D2E961EABFEFF00453248 /* CartesianGrid3D.hpp */,
-				922D2E951EABFEFF00453248 /* CartesianGrid3D.cpp */,
+				922D2E911EABFEDC00453248 /* Grid2D.hpp */,
+				922D2E901EABFEDC00453248 /* Grid2D.cpp */,
+				922D2E961EABFEFF00453248 /* Grid3D.hpp */,
+				922D2E951EABFEFF00453248 /* Grid3D.cpp */,
 			);
 			name = Grid;
 			sourceTree = "<group>";
@@ -296,8 +296,8 @@
 			children = (
 				92E46B341EA22995007ADAB1 /* Image.hpp */,
 				92E46B331EA22995007ADAB1 /* Image.cpp */,
-				92E46B361EA22995007ADAB1 /* Image3D.hpp */,
-				92E46B351EA22995007ADAB1 /* Image3D.cpp */,
+				92E46B361EA22995007ADAB1 /* ImageStack.hpp */,
+				92E46B351EA22995007ADAB1 /* ImageStack.cpp */,
 				92E46B371EA22995007ADAB1 /* ImagePyramid.hpp */,
 				92E46B381EA22995007ADAB1 /* ImagePyramidDefinition.hpp */,
 				92E46B391EA22995007ADAB1 /* STB.c */,
@@ -468,17 +468,16 @@
 				922D2E551EAB510000453248 /* Mesh.hpp in Headers */,
 				922D27291EA9025F00453248 /* SceneGraph Framework.h in Headers */,
 				92E46BCB1EA22995007ADAB1 /* Cube.hpp in Headers */,
-				922D2E981EABFEFF00453248 /* CartesianGrid3D.hpp in Headers */,
-				922D2E931EABFEDC00453248 /* CartesianGrid2D.hpp in Headers */,
+				922D2E981EABFEFF00453248 /* Grid3D.hpp in Headers */,
+				922D2E931EABFEDC00453248 /* Grid2D.hpp in Headers */,
 				92E46BD11EA22995007ADAB1 /* Rectangle.hpp in Headers */,
-				92E46BCD1EA22995007ADAB1 /* Ellipse.hpp in Headers */,
 				92E46BE91EA22995007ADAB1 /* Option.hpp in Headers */,
 				92E46BDF1EA22995007ADAB1 /* Either.hpp in Headers */,
 				92E46BE31EA22995007ADAB1 /* Helper.hpp in Headers */,
 				92E46BED1EA22995007ADAB1 /* PngTexture.h in Headers */,
 				92E46BF11EA22995007ADAB1 /* Text.hpp in Headers */,
 				92E46B8F1EA22995007ADAB1 /* Image.hpp in Headers */,
-				92E46B931EA22995007ADAB1 /* Image3D.hpp in Headers */,
+				92E46B931EA22995007ADAB1 /* ImageStack.hpp in Headers */,
 				92E46B951EA22995007ADAB1 /* ImagePyramid.hpp in Headers */,
 				92E46B971EA22995007ADAB1 /* ImagePyramidDefinition.hpp in Headers */,
 				92E46C0D1EA22995007ADAB1 /* Settings.hpp in Headers */,
@@ -565,13 +564,14 @@
 				922D2E621EAB511600453248 /* MeshNode.cpp in Sources */,
 				92E46C131EA22995007ADAB1 /* Surface.cpp in Sources */,
 				922D2E681EAB528100453248 /* Texture.cpp in Sources */,
-				922D2E971EABFEFF00453248 /* CartesianGrid3D.cpp in Sources */,
+				922D2E971EABFEFF00453248 /* Grid3D.cpp in Sources */,
 				92E46C0F1EA22995007ADAB1 /* Renderbuffer.cpp in Sources */,
 				92E46BB11EA22995007ADAB1 /* Material.cpp in Sources */,
 				922D2E7B1EAB595400453248 /* PixelFormat.cpp in Sources */,
 				92E46BAD1EA22995007ADAB1 /* ColorMaterial.cpp in Sources */,
 				92E46BB91EA22995007ADAB1 /* TextureMaterial.cpp in Sources */,
 				92E46BBD1EA22995007ADAB1 /* TextureMaterialRGBA.cpp in Sources */,
+				92D44D581F8A390E005204DB /* Cube.cpp in Sources */,
 				92E46BC11EA22995007ADAB1 /* TextureMaterialYUV.cpp in Sources */,
 				92E46BC51EA22995007ADAB1 /* TextureMaterialYUVA.cpp in Sources */,
 				92E46BB51EA22995007ADAB1 /* PhongMaterial.cpp in Sources */,
@@ -582,12 +582,12 @@
 				92E46BE51EA22995007ADAB1 /* Helper.mm in Sources */,
 				92E46BEF1EA22995007ADAB1 /* Text.cpp in Sources */,
 				92E46B8D1EA22995007ADAB1 /* Image.cpp in Sources */,
-				92E46B911EA22995007ADAB1 /* Image3D.cpp in Sources */,
+				92E46B911EA22995007ADAB1 /* ImageStack.cpp in Sources */,
 				92E46B991EA22995007ADAB1 /* STB.c in Sources */,
 				92E46C0B1EA22995007ADAB1 /* Settings.cpp in Sources */,
 				92E46C071EA22995007ADAB1 /* CullFace.cpp in Sources */,
 				92E46C051EA22995007ADAB1 /* Blend.cpp in Sources */,
-				922D2E921EABFEDC00453248 /* CartesianGrid2D.cpp in Sources */,
+				922D2E921EABFEDC00453248 /* Grid2D.cpp in Sources */,
 				92E46C091EA22995007ADAB1 /* Scissor.cpp in Sources */,
 				92E46B9B1EA22995007ADAB1 /* Assimp.cpp in Sources */,
 			);

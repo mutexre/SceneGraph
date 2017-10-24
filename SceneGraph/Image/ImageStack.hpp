@@ -5,7 +5,7 @@
 
 namespace SG
 {
-    class Image3D
+    class ImageStack
     {
     private:
         unsigned w, h;
@@ -13,12 +13,15 @@ namespace SG
         PixelDataType dataType;
         vector<shared_ptr<Image>> subImages;
 
+    private:
+        void updateStateBasedOnImage(const shared_ptr<Image>&);
+        
     public:
-        Image3D();
-        Image3D(const vector<string>&);
-        virtual ~Image3D();
+        ImageStack();
+        ImageStack(const vector<string>&, bool flipVertical, bool flipHorizontal);
+        virtual ~ImageStack();
 
-        Image3D(const Image3D&);
+        ImageStack(const ImageStack&);
 
         unsigned getW() const;
         unsigned getH() const;
@@ -33,6 +36,6 @@ namespace SG
         const shared_ptr<Image>& operator[](unsigned z) const;
 
         void resample(unsigned w, unsigned h);
-        shared_ptr<Image3D> getResampledImage(unsigned w, unsigned h) const;
+        shared_ptr<ImageStack> getResampledImage(unsigned w, unsigned h) const;
     };
 }

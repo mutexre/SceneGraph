@@ -62,7 +62,7 @@ namespace SG
 
     protected:
         virtual void setImages(const vector<shared_ptr<Image>>&) = 0;
-        virtual void setImages(const vector<shared_ptr<Image3D>>&) = 0;
+        virtual void setImages(const vector<shared_ptr<ImageStack>>&) = 0;
 
     public:
         Texture();
@@ -84,7 +84,7 @@ namespace SG
                                            unsigned layersCount = 1) = 0;
         
         void setImage(const shared_ptr<Image>&);
-        void setImage(const shared_ptr<Image3D>&);
+        void setImage(const shared_ptr<ImageStack>&);
         void setImage(Image&);
         
         virtual void setImage(const void* data,
