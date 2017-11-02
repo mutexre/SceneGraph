@@ -57,10 +57,15 @@ void Scene::setSkybox(const shared_ptr<Node>& node) {
 
 void Scene::addLight(const shared_ptr<Light>& light, const shared_ptr<Node>& where) {
     addNode(light, where);
+    lights.insert(light);
 }
 
 void Scene::addLight(const shared_ptr<Light>& light) {
     addLight(light, root);
+}
+
+void Scene::removeLight(const shared_ptr<Light>& light) {
+    lights.erase(light);
 }
 
 shared_ptr<Node> Scene::getRoot() const {
@@ -75,13 +80,13 @@ void Scene::setGlobalAmbient(const vec3& value) {
     globalAmbient = value;
 }
 
-unsigned Scene::getLightCount() const {
-    return lightCount;
-}
-
-void Scene::setLightCount(unsigned value) {
-    lightCount = value;
-}
+//unsigned Scene::getLightCount() const {
+//    return lightCount;
+//}
+//
+//void Scene::setLightCount(unsigned value) {
+//    lightCount = value;
+//}
 
 void Scene::animate(double t) {
     root->animate(t, true);

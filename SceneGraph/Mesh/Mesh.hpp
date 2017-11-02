@@ -15,6 +15,7 @@ namespace SG
         struct {
             vector<vec4> coords;
             vector<vec3> normals;
+            vector<vec4> colors;
             vector<vec2> uvs;
             vector<unsigned> indices;
         }
@@ -29,6 +30,7 @@ namespace SG
         struct {
             bool indices = false;
             bool coords  = false;
+            bool colors  = false;
             bool normals = false;
             bool uvs = false;
         }
@@ -36,6 +38,7 @@ namespace SG
 
         struct {
             bool normals = true;
+            bool colors = true;
             bool uvs = true;
         }
         enabled;
@@ -68,6 +71,10 @@ namespace SG
         const vector<vec3>& getNormals() const;
         vector<vec3>& getNormals();
         Mesh& setNormals(const vector<vec3>&);
+        
+        const vector<vec4>& getColors() const;
+        vector<vec4>& getColors();
+        Mesh& setColors(const vector<vec4>&);
 
         const vector<vec2>& getUVs() const;
         vector<vec2>& getUVs();
@@ -76,16 +83,19 @@ namespace SG
         void clearIndices();
         void clearCoords();
         void clearNormals();
+        void clearColors();
         void clearUVs();
         void clearAll();
         
         void invalidateIndices();
         void invalidateCoords();
         void invalidateNormals();
+        void invalidateColors();
         void invalidateUVs();
         void invalidateAll();
 
         virtual Mesh& enableNormalsArray(bool = true);
+        virtual Mesh& enableColorsArray(bool = true);
         virtual Mesh& enableUVsArray(bool = true);
 
         void calcNormals();

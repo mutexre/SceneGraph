@@ -46,6 +46,60 @@ namespace SG
         }
         skyboxAmbience, ambience;
 
+    protected:
+        struct
+        {
+            bool doubleSided;
+            bool opacity;
+            bool shininess;
+            bool reflectivity;
+            bool emissive;
+            bool ambient;
+            bool diffuse;
+            bool specular;
+            
+            bool diffuseMapEnabled;
+            bool bumpMapEnabled;
+            bool skyboxEnabled;
+            bool skyboxTransform;
+            
+            struct {
+                bool enabled;
+                bool lod;
+                bool intensity;
+            }
+            skyboxAmbience, ambience;
+        }
+        sync;
+        
+    protected:
+        virtual void invalidateVariables() override;
+        virtual void syncTextureSamplers() override;
+        virtual void syncVariables() override;
+        virtual void activateTextures() override;
+        
+        void syncDoubleSided();
+        void syncOpacity();
+        void syncShininess();
+        void syncReflectivity();
+        void syncEmissive();
+        void syncAmbient();
+        void syncDiffuse();
+        void syncSpecular();
+
+        void syncDiffuseMapEnabled();
+        void syncBumpMapEnabled();
+        void syncSkyboxEnabled();
+        void syncSkyboxTransform();
+
+        void syncSkyboxAmbienceEnabled();
+        void syncSkyboxAmbienceLod();
+        void syncSkyboxAmbienceIntensity();
+
+        void syncAmbienceEnabled();
+        void syncAmbienceLod();
+        void syncAmbienceIntensity();
+
     public:
         PhongMaterial(const shared_ptr<Context>&);
 
@@ -116,6 +170,6 @@ namespace SG
         float getAmbienceIntensity() const;
         PhongMaterial& setAmbienceIntensity(float);
 
-        virtual void bind();
+//        virtual void bind();
     };
 }

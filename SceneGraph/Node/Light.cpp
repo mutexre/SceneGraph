@@ -140,7 +140,8 @@ Light& Light::setAttenuation(float constant, float linear, float quadratic) {
     return *this;
 }
 
-void Light::setOnGPU(int index, const shared_ptr<Program>& program, const vec3& position, const vec3& direction) {
+void Light::setOnGPU(int index, const shared_ptr<Program>& program, const vec3& position, const vec3& direction)
+{
     string prefix = "lights[" + to_string(index) + "].";
 
     if (program->isUniformActive(prefix + "enabled"))
@@ -148,11 +149,11 @@ void Light::setOnGPU(int index, const shared_ptr<Program>& program, const vec3& 
         program->set(prefix + "enabled", enabled ? 1 : 0);
         if (enabled) {
             program->set(prefix + "type", unsigned(type));
-
+            
             program->set(prefix + "ambient", 3, 1, (const float*)&ambient);
             program->set(prefix + "diffuse", 3, 1, (const float*)&diffuse);
             program->set(prefix + "specular", 3, 1, (const float*)&specular);
-
+            
             program->set(prefix + "position", position[0], position[1], position[2]);
             program->set(prefix + "direction", 3, 1, (const float*)&direction);
             

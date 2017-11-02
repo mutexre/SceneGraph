@@ -8,13 +8,15 @@ namespace SG
     class Scene : public virtual Object,
                   public enable_shared_from_this<Scene>
     {
+        friend class MeshNode;
+        
     protected:
         shared_ptr<Context> context;
         shared_ptr<Node> root = nullptr;
 
-        list<shared_ptr<Light>> lights;
+        set<shared_ptr<Light>> lights;
 
-        unsigned lightCount = 8;
+//        unsigned lightCount = 8;
 
         vec3 globalAmbient{ 0.f };
         shared_ptr<Camera> defaultCamera;
@@ -25,6 +27,10 @@ namespace SG
 
     private:
         unsigned currentLightGroup = 0;
+
+    protected:
+        virtual void setLightsOnGPU(const shared_ptr<Program>&,
+                                    const mat4& viewMatrix) = 0;
 
     public:
         Scene(const shared_ptr<Context>&);
@@ -43,7 +49,6 @@ namespace SG
         void setRoot(const shared_ptr<Node>&);
 
         void setGlobalAmbient(const vec3&);
-        virtual void setLightsOnGPU(const shared_ptr<Program>&, const mat4& viewMatrix) = 0;
         void enableLights(bool enable = true);
         void setDefaultCamera(const shared_ptr<Camera>&);
 
@@ -59,6 +64,7 @@ namespace SG
 
         void addLight(const shared_ptr<Light>&, const shared_ptr<Node>& where);
         void addLight(const shared_ptr<Light>&);
+        void removeLight(const shared_ptr<Light>&);
 
         void animate(double time);
 

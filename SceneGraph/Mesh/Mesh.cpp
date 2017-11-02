@@ -75,6 +75,16 @@ Mesh& Mesh::setNormals(const vector<vec3>& v) {
     return *this;
 }
 
+vector<vec4>& Mesh::getColors() {
+    return data.colors;
+}
+
+Mesh& Mesh::setColors(const vector<vec4>& v) {
+    data.colors = v;
+    invalidateColors();
+    return *this;
+}
+
 vector<vec2>& Mesh::getUVs() {
     return data.uvs;
 }
@@ -95,6 +105,10 @@ void Mesh::clearCoords() {
 
 void Mesh::clearNormals() {
     data.normals.clear();
+}
+
+void Mesh::clearColors() {
+    data.colors.clear();
 }
 
 void Mesh::clearUVs() {
@@ -121,6 +135,10 @@ void Mesh::invalidateNormals() {
     valid.normals = false;
 }
 
+void Mesh::invalidateColors() {
+    valid.colors = false;
+}
+
 void Mesh::invalidateUVs() {
     valid.uvs = false;
 }
@@ -135,6 +153,11 @@ void Mesh::invalidateAll()
 
 Mesh& Mesh::enableNormalsArray(bool enable) {
     enabled.normals = enable;
+    return *this;
+}
+
+Mesh& Mesh::enableColorsArray(bool enable) {
+    enabled.colors = enable;
     return *this;
 }
 

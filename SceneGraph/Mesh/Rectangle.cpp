@@ -11,6 +11,7 @@ void SG::Rect::fillVertexAttributes(shared_ptr<Mesh>& mesh, bool verticallyFlipU
     
     auto& coords = mesh->getCoords();
     auto& normals = mesh->getNormals();
+    auto& colors = mesh->getColors();
     auto& uvs = mesh->getUVs();
     
     coords.push_back({ -1.f, -1.f, 0.f, 1.f });
@@ -22,6 +23,11 @@ void SG::Rect::fillVertexAttributes(shared_ptr<Mesh>& mesh, bool verticallyFlipU
     normals.push_back({ 0.f, 0.f, 1.f });
     normals.push_back({ 0.f, 0.f, 1.f });
     normals.push_back({ 0.f, 0.f, 1.f });
+    
+    colors.push_back({ 1.f, 1.f, 1.f, 1.f });
+    colors.push_back({ 1.f, 1.f, 1.f, 1.f });
+    colors.push_back({ 1.f, 1.f, 1.f, 1.f });
+    colors.push_back({ 1.f, 1.f, 1.f, 1.f });
     
     if (verticallyFlipUVs)
     {
@@ -40,6 +46,7 @@ void SG::Rect::fillVertexAttributes(shared_ptr<Mesh>& mesh, bool verticallyFlipU
     
     mesh->invalidateCoords();
     mesh->invalidateNormals();
+    mesh->invalidateColors();
     mesh->invalidateUVs();
 }
 

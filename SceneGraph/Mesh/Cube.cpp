@@ -11,6 +11,7 @@ void SG::Cube::fillVertexAttributes(shared_ptr<Mesh>& mesh)
     
     auto& coords = mesh->getCoords();
     auto& normals = mesh->getNormals();
+    auto& colors = mesh->getColors();
     auto& uvs = mesh->getUVs();
     
     coords = {
@@ -71,6 +72,35 @@ void SG::Cube::fillVertexAttributes(shared_ptr<Mesh>& mesh)
         { 0.0f,  0.0f, -1.0f }
     };
     
+    colors = {
+        { 1.f, 1.f, 1.f, 1.f },
+        { 1.f, 1.f, 1.f, 1.f },
+        { 1.f, 1.f, 1.f, 1.f },
+        { 1.f, 1.f, 1.f, 1.f },
+        { 1.f, 1.f, 1.f, 1.f },
+        { 1.f, 1.f, 1.f, 1.f },
+        { 1.f, 1.f, 1.f, 1.f },
+        { 1.f, 1.f, 1.f, 1.f },
+        
+        { 1.f, 1.f, 1.f, 1.f },
+        { 1.f, 1.f, 1.f, 1.f },
+        { 1.f, 1.f, 1.f, 1.f },
+        { 1.f, 1.f, 1.f, 1.f },
+        { 1.f, 1.f, 1.f, 1.f },
+        { 1.f, 1.f, 1.f, 1.f },
+        { 1.f, 1.f, 1.f, 1.f },
+        { 1.f, 1.f, 1.f, 1.f },
+        
+        { 1.f, 1.f, 1.f, 1.f },
+        { 1.f, 1.f, 1.f, 1.f },
+        { 1.f, 1.f, 1.f, 1.f },
+        { 1.f, 1.f, 1.f, 1.f },
+        { 1.f, 1.f, 1.f, 1.f },
+        { 1.f, 1.f, 1.f, 1.f },
+        { 1.f, 1.f, 1.f, 1.f },
+        { 1.f, 1.f, 1.f, 1.f }
+    };
+    
     uvs = {
         { 1.0f, 1.0f },
         { 1.0f, 0.0f },
@@ -102,6 +132,7 @@ void SG::Cube::fillVertexAttributes(shared_ptr<Mesh>& mesh)
     
     mesh->invalidateCoords();
     mesh->invalidateNormals();
+    mesh->invalidateColors();
     mesh->invalidateUVs();
 }
 

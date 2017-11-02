@@ -138,10 +138,10 @@ PhongMaterial& PhongMaterial::setDoubleSided(bool d)
 {
     doubleSided = d;
     
-    if (!isProgramShared()) {
-        Material::bind();
-        program->set("material.doubleSided", doubleSided ? 1 : 0);
-    }
+//    if (!isProgramShared()) {
+//        Material::bind();
+//        program->set("material.doubleSided", doubleSided ? 1 : 0);
+//    }
     
     return *this;
 }
@@ -252,68 +252,285 @@ PhongMaterial& PhongMaterial::setAmbienceIntensity(float intensity) {
     return *this;
 }
 
-void PhongMaterial::bind()
+void PhongMaterial::syncTextureSamplers()
 {
-    Material::bind();
+    if (program->isUniformActive("material.diffuseMap.texture"))
+        program->set("material.diffuseMap.texture", 0);
+    
+    if (program->isUniformActive("material.bumpMap.texture"))
+        program->set("material.bumpMap.texture", 1);
+    
+    if (program->isUniformActive("skybox.texture"))
+        program->set("skybox.texture", 2);
+    
+    if (program->isUniformActive("skyboxAmbience.texture"))
+        program->set("skyboxAmbience.texture", 2);
+    
+    if (program->isUniformActive("ambience.texture"))
+        program->set("ambience.texture", 3);
+}
 
+void PhongMaterial::invalidateVariables()
+{
+    sync.doubleSided = false;
+    sync.opacity = false;
+    sync.shininess = false;
+    sync.reflectivity = false;
+    sync.emissive = false;
+    sync.ambient = false;
+    sync.diffuse = false;
+    sync.specular = false;
+
+    sync.diffuseMapEnabled = false;
+    sync.bumpMapEnabled = false;
+    sync.skyboxEnabled = false;
+    sync.skyboxTransform = false;
+
+    sync.skyboxAmbience.enabled = false;
+    sync.skyboxAmbience.lod = false;
+    sync.skyboxAmbience.intensity = false;
+    
+    sync.ambience.enabled = false;
+    sync.ambience.lod = false;
+    sync.ambience.intensity = false;
+}
+
+void PhongMaterial::syncDoubleSided()
+{
+    if (program->isUniformActive("material.doubleSided"))
+        program->set("material.doubleSided", doubleSided ? 1 : 0);
+
+    sync.doubleSided = true;
+}
+
+void PhongMaterial::syncOpacity()
+{
+    if (program->isUniformActive("material.opacity"))
+        program->set("material.opacity", opacity);
+
+    sync.opacity = true;
+}
+
+void PhongMaterial::syncShininess()
+{
+    if (program->isUniformActive("material.shininess"))
+        program->set("material.shininess", shininess);
+
+    sync.shininess = true;
+}
+
+void PhongMaterial::syncReflectivity()
+{
+    if (program->isUniformActive("material.reflectivity"))
+        program->set("material.reflectivity", reflectivity);
+
+    sync.reflectivity = true;
+}
+
+void PhongMaterial::syncEmissive()
+{
+    if (program->isUniformActive("material.emissive"))
+        program->set("material.emissive", 3, 1, (const float*)&emissive);
+
+    sync.emissive = true;
+}
+
+void PhongMaterial::syncAmbient()
+{
+    if (program->isUniformActive("material.ambient"))
+        program->set("material.ambient", 3, 1, (const float*)&reflectance.ambient);
+
+    sync.ambient = true;
+}
+
+void PhongMaterial::syncDiffuse()
+{
+    if (program->isUniformActive("material.diffuse"))
+        program->set("material.diffuse", 3, 1, (const float*)&reflectance.diffuse);
+
+    sync.diffuse = true;
+}
+
+void PhongMaterial::syncSpecular()
+{
+    if (program->isUniformActive("material.specular"))
+        program->set("material.specular", 3, 1, (const float*)&reflectance.specular);
+
+    sync.specular = true;
+}
+
+void PhongMaterial::syncDiffuseMapEnabled()
+{
+    if (program->isUniformActive("material.diffuseMap.enabled"))
+        program->set("material.diffuseMap.enabled", textures.diffuse != nullptr ? 1 : 0);
+
+    sync.diffuseMapEnabled = true;
+}
+
+void PhongMaterial::syncBumpMapEnabled()
+{
+    if (program->isUniformActive("material.bumpMap.enabled"))
+        program->set("material.bumpMap.enabled", textures.bump != nullptr ? 1 : 0);
+
+    sync.bumpMapEnabled = true;
+}
+
+void PhongMaterial::syncSkyboxEnabled()
+{
+    if (program->isUniformActive("skybox.enabled"))
+        program->set("skybox.enabled", textures.skybox != nullptr ? 1 : 0);
+
+    sync.skyboxEnabled = true;
+}
+
+void PhongMaterial::syncSkyboxTransform()
+{
+    if (program->isUniformActive("skybox.transform"))
+        program->set("skybox.transform", mat3(1));
+    
+    sync.skyboxTransform = true;
+}
+
+void PhongMaterial::syncSkyboxAmbienceEnabled()
+{
+    if (program->isUniformActive("skybox.ambience.enabled"))
+        program->set("skybox.ambience.enabled", skyboxAmbience.enabled ? 1 : 0);
+
+    sync.skyboxAmbience.enabled = true;
+}
+
+void PhongMaterial::syncSkyboxAmbienceLod()
+{
+    if (program->isUniformActive("skybox.ambience.lod"))
+        program->set("skybox.ambience.lod", skyboxAmbience.lod);
+
+    sync.skyboxAmbience.lod = true;
+}
+
+void PhongMaterial::syncSkyboxAmbienceIntensity()
+{
+    if (program->isUniformActive("skybox.ambience.intensity"))
+        program->set("skybox.ambience.intensity", skyboxAmbience.intensity);
+
+    sync.skyboxAmbience.intensity = true;
+}
+
+void PhongMaterial::syncAmbienceEnabled()
+{
+    if (program->isUniformActive("ambience.enabled"))
+        program->set("ambience.enabled", ambience.enabled ? 1 : 0);
+
+    sync.skyboxAmbience.enabled = true;
+}
+
+void PhongMaterial::syncAmbienceLod()
+{
+    if (program->isUniformActive("ambience.lod"))
+        program->set("ambience.lod", ambience.lod);
+
+    sync.ambience.lod = true;
+}
+
+void PhongMaterial::syncAmbienceIntensity()
+{
+    if (program->isUniformActive("ambience.intensity"))
+        program->set("ambience.intensity", ambience.intensity);
+
+    sync.ambience.intensity = true;
+}
+
+void PhongMaterial::syncVariables()
+{
     if (isProgramShared())
     {
-        string prefix = "material.";
-        
-        program->set(prefix + "doubleSided", doubleSided ? 1 : 0);
-        
-        program->set(prefix + "opacity", opacity);
-        program->set(prefix + "shininess", shininess);
-        program->set(prefix + "reflectivity", reflectivity);
-        
-        program->set(prefix + "emissive", 3, 1, (const float*)&emissive);
-        program->set(prefix + "ambient", 3, 1, (const float*)&reflectance.ambient);
-        program->set(prefix + "diffuse", 3, 1, (const float*)&reflectance.diffuse);
-        program->set(prefix + "specular", 3, 1, (const float*)&reflectance.specular);
-
-        program->set(prefix + "diffuseMap.texture", 0);
-        program->set(prefix + "bumpMap.texture", 1);
-        program->set("skybox.texture", 2);
-        program->set("skyboxAmbience.texture", 2);
-        program->set("ambience.texture", 3);
-
-        if (textures.diffuse) {
-            program->set(prefix + "diffuseMap.enabled", 1);
-            context->activate(0, textures.diffuse);
-        }
-        else
-            program->set(prefix + "diffuseMap.enabled", 0);
-
-        if (textures.bump) {
-            program->set(prefix + "bumpMap.enabled", 1);
-            context->activate(1, textures.bump);
-        }
-        else
-            program->set(prefix + "bumpMap.enabled", 0);
-
-        if (textures.skybox) {
-            program->set("skybox.enabled", 1);
-            context->activate(2, textures.skybox);
-        }
-        else
-            program->set("skybox.enabled", 0);
-
-        if (skyboxAmbience.enabled) {
-            program->set("skybox.ambience.enabled", 1);
-            program->set("skybox.ambience.lod", skyboxAmbience.lod);
-            program->set("skybox.ambience.intensity", skyboxAmbience.intensity);
-            context->activate(2, textures.skybox);
-        }
-        else
-            program->set("skybox.ambience.enabled", 0);
-
-        if (ambience.enabled) {
-            program->set("ambience.enabled", 1);
-            program->set("ambience.lod", ambience.lod);
-            program->set("ambience.intensity", ambience.intensity);
-            context->activate(3, textures.ambience);
-        }
-        else
-            program->set("ambience.enabled", 0);
+        syncDoubleSided();
+        syncOpacity();
+        syncShininess();
+        syncReflectivity();
+        syncEmissive();
+        syncAmbient();
+        syncDiffuse();
+        syncSpecular();
+        syncDiffuseMapEnabled();
+        syncBumpMapEnabled();
+        syncSkyboxEnabled();
+        syncSkyboxTransform();
+        syncSkyboxAmbienceEnabled();
+        syncSkyboxAmbienceLod();
+        syncSkyboxAmbienceIntensity();
+        syncAmbienceEnabled();
+        syncAmbienceLod();
+        syncAmbienceIntensity();
     }
+    else
+    {
+        if (!sync.doubleSided)
+            syncDoubleSided();
+        
+        if (!sync.opacity)
+            syncOpacity();
+        
+        if (!sync.shininess)
+            syncShininess();
+        
+        if (sync.reflectivity)
+            syncReflectivity();
+        
+        if (!sync.emissive)
+            syncEmissive();
+        
+        if (!sync.ambient)
+            syncAmbient();
+        
+        if (!sync.diffuse)
+            syncDiffuse();
+        
+        if (!sync.specular)
+            syncSpecular();
+
+        if (!sync.diffuseMapEnabled)
+            syncDiffuseMapEnabled();
+        
+        if (!sync.bumpMapEnabled)
+            syncBumpMapEnabled();
+        
+        if (!sync.skyboxEnabled)
+            syncSkyboxEnabled();
+
+        if (!sync.skyboxTransform)
+            syncSkyboxTransform();
+
+        if (!sync.skyboxAmbience.enabled)
+            syncSkyboxAmbienceEnabled();
+        
+        if (!sync.skyboxAmbience.lod)
+            syncSkyboxAmbienceLod();
+        
+        if (!sync.skyboxAmbience.intensity)
+            syncSkyboxAmbienceIntensity();
+        
+        if (!sync.ambience.enabled)
+            syncAmbienceEnabled();
+        
+        if (!sync.ambience.lod)
+            syncAmbienceLod();
+        
+        if (!sync.ambience.intensity)
+            syncAmbienceIntensity();
+    }
+}
+
+void PhongMaterial::activateTextures()
+{
+    if (textures.diffuse)
+        context->activate(0, textures.diffuse);
+
+    if (textures.bump)
+        context->activate(1, textures.bump);
+
+    if (textures.skybox)
+        context->activate(2, textures.skybox);
+
+    if (textures.ambience)
+        context->activate(3, textures.ambience);
 }
