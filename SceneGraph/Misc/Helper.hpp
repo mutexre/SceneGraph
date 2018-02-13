@@ -19,12 +19,12 @@ namespace SG
 
 #ifdef __APPLE__
 
-    Option<string> findResourcePathByName(CFBundleRef bundle, const char* name, const char* ext);
-    Option<string> findResourcePathByName(const char* name, const char* ext);
+    Option<string> findResourcePathByName(CFBundleRef bundle, const string& name, const string& ext);
     Option<string> findResourcePathByName(const string& name, const string& ext);
 
     auto cfDeleter = [](CFTypeRef ref) {
-        if (ref) CFRelease(ref);
+        if (ref)
+            CFRelease(ref);
     };
 
     template <typename T>
@@ -42,7 +42,7 @@ namespace SG
 
 #endif
 
-    Option<SG::Program::Source> readProgramSource(const char* vertex, const char* fragment);
+    Option<SG::Program::Source> readProgramSource(const string& vertex, const string& fragment);
     
     std::pair<ColorComponents, PixelDataType> splitPixelFormat(PixelFormat);
     Option<PixelFormat> guessPixelFormat(ColorComponents, PixelDataType);

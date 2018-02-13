@@ -106,23 +106,23 @@ namespace SG
         ShadingModel getMode() const;
         PhongMaterial& setMode(ShadingModel);
 
-        vec3 getEmissive() const;
-        PhongMaterial& setEmissive(vec3);
+        const vec3& getEmissive() const;
+        PhongMaterial& setEmissive(const vec3&);
         PhongMaterial& setEmissive(float r, float g, float b);
         PhongMaterial& setEmissive(float);
 
-        vec3 getAmbientReflectance() const;
-        PhongMaterial& setAmbient(vec3);
+        const vec3& getAmbientReflectance() const;
+        PhongMaterial& setAmbient(const vec3&);
         PhongMaterial& setAmbient(float r, float g, float b);
         PhongMaterial& setAmbient(float);
 
-        vec3 getDiffuseReflectance() const;
-        PhongMaterial& setDiffuse(vec3);
+        const vec3& getDiffuseReflectance() const;
+        PhongMaterial& setDiffuse(const vec3&);
         PhongMaterial& setDiffuse(float r, float g, float b);
         PhongMaterial& setDiffuse(float);
 
-        vec3 getSpecularReflectance() const;
-        PhongMaterial& setSpecular(vec3);
+        const vec3& getSpecularReflectance() const;
+        PhongMaterial& setSpecular(const vec3&);
         PhongMaterial& setSpecular(float r, float g, float b);
         PhongMaterial& setSpecular(float);
 
@@ -138,16 +138,16 @@ namespace SG
         bool getDoubleSided() const;
         PhongMaterial& setDoubleSided(bool);
 
-        shared_ptr<Texture> getDiffuseTexture() const;
+        const shared_ptr<Texture>& getDiffuseTexture() const;
         PhongMaterial& setDiffuseTexture(const shared_ptr<Texture>&);
         
-        shared_ptr<Texture> getBumpTexture() const;
+        const shared_ptr<Texture>& getBumpTexture() const;
         PhongMaterial& setBumpTexture(const shared_ptr<Texture>&);
         
-        shared_ptr<Texture> getSkyboxTexture() const;
+        const shared_ptr<Texture>& getSkyboxTexture() const;
         PhongMaterial& setSkyboxTexture(const shared_ptr<Texture>&);
 
-        shared_ptr<Texture> getAmbienceTexture() const;
+        const shared_ptr<Texture>& getAmbienceTexture() const;
         PhongMaterial& setAmbienceTexture(const shared_ptr<Texture>&);
         
         bool isSkyboxAmbienceMapEnabled() const;

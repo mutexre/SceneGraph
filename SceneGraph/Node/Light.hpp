@@ -73,7 +73,7 @@ namespace SG
         Light& setDirection(float);
 
         void setOnGPU(int index, const shared_ptr<Program>&,
-                      const vec3& position,
+                      const vec3& viewCoord,
                       const vec3& direction);
     };
 }

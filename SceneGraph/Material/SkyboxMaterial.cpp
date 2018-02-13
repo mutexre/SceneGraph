@@ -22,6 +22,10 @@ SkyboxMaterial::SkyboxMaterial(const shared_ptr<Context>& context,
     setLod(lod);
 }
 
+const shared_ptr<Texture>& SkyboxMaterial::getTexture() const {
+    return texture;
+}
+
 SkyboxMaterial& SkyboxMaterial::setTexture(const shared_ptr<Texture>& t)
 {
     texture = t;

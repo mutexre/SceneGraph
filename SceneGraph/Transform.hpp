@@ -18,22 +18,31 @@ namespace SG
             virtual void update() = 0;
         };
 
-        struct Scale : public Component {
-            Scale() { xyz = vec3(1.f); }
+        struct Scale : public Component
+        {
+            Scale() {
+                xyz.x = xyz.y = xyz.z = 1;
+            }
             void update() override;
         }
         scale;
 
-        struct Rotation: public Component {
+        struct Rotation: public Component
+        {
             RotationOrder order;
             mat4 postRotation;
-            Rotation() { xyz = vec3(0.f); }
+            Rotation() {
+                xyz.x = xyz.y = xyz.z = 0;
+            }
             void update() override;
         }
         rotate;
 
-        struct Translate : public Component {
-            Translate() { xyz = vec3(0.f); }
+        struct Translate : public Component
+        {
+            Translate() {
+                xyz.x = xyz.y = xyz.z = 0;
+            }
             void update() override;
         }
         translate;

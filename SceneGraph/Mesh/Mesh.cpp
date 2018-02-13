@@ -36,7 +36,7 @@ Mesh& Mesh::enableDirectMode(bool enable) {
     return *this;
 }
 
-shared_ptr<Program>& Mesh::getProgram() {
+const shared_ptr<Program>& Mesh::getProgram() const {
     return program;
 }
 

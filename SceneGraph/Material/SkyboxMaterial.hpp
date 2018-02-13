@@ -29,7 +29,7 @@ namespace SG
                        const shared_ptr<Texture>&,
                        float lod);
 
-        shared_ptr<Texture>& getTexture();
+        const shared_ptr<Texture>& getTexture() const;
         SkyboxMaterial& setTexture(const shared_ptr<Texture>&);
         
         float getLod() const;

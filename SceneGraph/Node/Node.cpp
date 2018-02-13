@@ -223,7 +223,8 @@ void Node::drawRecursively(const shared_ptr<Scene>& scene,
     }
 }
 
-void Node::print() {
+void Node::print()
+{
     traverse([](shared_ptr<Node>& node) -> bool {
 //        LOGD("node: \"%s\" of type %u with %llu children\n",
 //            node->getName().c_str(),

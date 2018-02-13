@@ -19,9 +19,14 @@ namespace SG
     public:
         ImageStack();
         ImageStack(const vector<string>&, bool flipVertical, bool flipHorizontal);
-        virtual ~ImageStack();
 
-        ImageStack(const ImageStack&);
+        ImageStack(const ImageStack&) = default;
+        ImageStack& operator=(ImageStack&) = default;
+        
+        ImageStack(ImageStack&&) = default;
+        ImageStack& operator=(ImageStack&&) = default;
+
+        virtual ~ImageStack();
 
         unsigned getW() const;
         unsigned getH() const;

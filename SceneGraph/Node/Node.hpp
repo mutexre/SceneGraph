@@ -74,7 +74,7 @@ namespace SG
         Node& setSettings(const Settings&);
         void removeSettings();
 
-        shared_ptr<Mesh>& getMesh();
+        const shared_ptr<Mesh>& getMesh() const;
         Node& setMesh(const shared_ptr<Mesh>&);
 
         void animate(double t, bool recursive = false);

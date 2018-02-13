@@ -15,9 +15,9 @@ TextureMaterialYUV::TextureMaterialYUV(const shared_ptr<Context>& context,
                                        const shared_ptr<Program>& program,
                                        const shared_ptr<Texture>& y,
                                        const shared_ptr<Texture>& uv,
-                                       mat3 colorConversion,
-                                       mat3 yTransform,
-                                       mat3 uvTransform)
+                                       const mat3& colorConversion,
+                                       const mat3& yTransform,
+                                       const mat3& uvTransform)
  : TextureMaterialYUV(context)
 {
     setMode(Mode::uv);
@@ -37,10 +37,10 @@ TextureMaterialYUV::TextureMaterialYUV(const shared_ptr<Context>& context,
                                        const shared_ptr<Texture>& y,
                                        const shared_ptr<Texture>& u,
                                        const shared_ptr<Texture>& v,
-                                       mat3 colorConversion,
-                                       mat3 yTransform,
-                                       mat3 uTransform,
-                                       mat3 vTransform)
+                                       const mat3& colorConversion,
+                                       const mat3& yTransform,
+                                       const mat3& uTransform,
+                                       const mat3& vTransform)
  : TextureMaterialYUV(context)
 {
     setMode(Mode::u_v);
@@ -105,7 +105,7 @@ TextureMaterialYUV& TextureMaterialYUV::setUV(const shared_ptr<Texture>& texture
     return *this;
 }
 
-mat3 TextureMaterialYUV::getColorConversion() const {
+const mat3& TextureMaterialYUV::getColorConversion() const {
     return colorConversion;
 }
 
@@ -130,11 +130,11 @@ void TextureMaterialYUV::syncColorConversion()
     sync.colorConversion = true;
 }
 
-mat3 TextureMaterialYUV::getUvTransformY() const {
+const mat3& TextureMaterialYUV::getUvTransformY() const {
     return uvTransform.y;
 }
 
-TextureMaterialYUV& TextureMaterialYUV::setUvTransformY(mat3 m)
+TextureMaterialYUV& TextureMaterialYUV::setUvTransformY(const mat3& m)
 {
     uvTransform.y = m;
     
@@ -155,11 +155,11 @@ void TextureMaterialYUV::syncUvTransformY()
     sync.uvTransform.y = true;
 }
 
-mat3 TextureMaterialYUV::getUvTransformU() const {
+const mat3& TextureMaterialYUV::getUvTransformU() const {
     return uvTransform.u;
 }
 
-TextureMaterialYUV& TextureMaterialYUV::setUvTransformU(mat3 m)
+TextureMaterialYUV& TextureMaterialYUV::setUvTransformU(const mat3& m)
 {
     uvTransform.u = m;
     
@@ -180,11 +180,11 @@ void TextureMaterialYUV::syncUvTransformU()
     sync.uvTransform.u = true;
 }
 
-mat3 TextureMaterialYUV::getUvTransformV() const {
+const mat3& TextureMaterialYUV::getUvTransformV() const {
     return uvTransform.v;
 }
 
-TextureMaterialYUV& TextureMaterialYUV::setUvTransformV(mat3 m)
+TextureMaterialYUV& TextureMaterialYUV::setUvTransformV(const mat3& m)
 {
     uvTransform.v = m;
     
@@ -205,11 +205,11 @@ void TextureMaterialYUV::syncUvTransformV()
     sync.uvTransform.v = true;
 }
 
-mat3 TextureMaterialYUV::getUvTransformUV() const {
+const mat3& TextureMaterialYUV::getUvTransformUV() const {
     return uvTransform.uv;
 }
 
-TextureMaterialYUV& TextureMaterialYUV::setUvTransformUV(mat3 m)
+TextureMaterialYUV& TextureMaterialYUV::setUvTransformUV(const mat3& m)
 {
     uvTransform.uv = m;
     

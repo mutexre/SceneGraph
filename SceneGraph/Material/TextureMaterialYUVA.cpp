@@ -16,10 +16,10 @@ TextureMaterialYUVA::TextureMaterialYUVA(const shared_ptr<Context>& context,
                                          const shared_ptr<Texture>& luma,
                                          const shared_ptr<Texture>& chroma,
                                          const shared_ptr<Texture>& alpha,
-                                         mat3 colorConversion,
-                                         mat3 lumaUvTransform,
-                                         mat3 chromaUvTransform,
-                                         mat3 alphaUvTransform)
+                                         const mat3& colorConversion,
+                                         const mat3& lumaUvTransform,
+                                         const mat3& chromaUvTransform,
+                                         const mat3& alphaUvTransform)
  : TextureMaterialYUVA(context)
 {
     setProgram(program);
@@ -62,7 +62,7 @@ TextureMaterialYUVA& TextureMaterialYUVA::setAlphaTexture(const shared_ptr<Textu
     return *this;
 }
 
-mat3 TextureMaterialYUVA::getColorConversion() const {
+const mat3& TextureMaterialYUVA::getColorConversion() const {
     return colorConversion;
 }
 
@@ -87,11 +87,11 @@ void TextureMaterialYUVA::syncColorConversion()
     sync.colorConversion = true;
 }
 
-mat3 TextureMaterialYUVA::getLumaUvTransform() const {
+const mat3& TextureMaterialYUVA::getLumaUvTransform() const {
     return uvTransform.luma;
 }
 
-TextureMaterialYUVA& TextureMaterialYUVA::setLumaUvTransform(mat3 m)
+TextureMaterialYUVA& TextureMaterialYUVA::setLumaUvTransform(const mat3& m)
 {
     uvTransform.luma = m;
     
@@ -112,11 +112,11 @@ void TextureMaterialYUVA::syncLumaUvTransform()
     sync.uvTransform.luma = true;
 }
 
-mat3 TextureMaterialYUVA::getChromaUvTransform() const {
+const mat3& TextureMaterialYUVA::getChromaUvTransform() const {
     return uvTransform.chroma;
 }
 
-TextureMaterialYUVA& TextureMaterialYUVA::setChromaUvTransform(mat3 m)
+TextureMaterialYUVA& TextureMaterialYUVA::setChromaUvTransform(const mat3& m)
 {
     uvTransform.chroma = m;
     
@@ -137,11 +137,11 @@ void TextureMaterialYUVA::syncChromaUvTransform()
     sync.uvTransform.chroma = true;
 }
 
-mat3 TextureMaterialYUVA::getAlphaUvTransform() const {
+const mat3& TextureMaterialYUVA::getAlphaUvTransform() const {
     return uvTransform.alpha;
 }
 
-TextureMaterialYUVA& TextureMaterialYUVA::setAlphaUvTransform(mat3 m)
+TextureMaterialYUVA& TextureMaterialYUVA::setAlphaUvTransform(const mat3& m)
 {
     uvTransform.alpha = m;
     

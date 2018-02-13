@@ -18,11 +18,7 @@ void Program::adjustUseCount(int amount) {
     useCount += amount;
 }
 
-shared_ptr<Program::Binary> Program::getBinary()
-{
-    if (!binary)
-        loadBinary();
-    
+const shared_ptr<Program::Binary>& Program::getBinary() const {
     return binary;
 }
 

@@ -62,5 +62,7 @@ namespace SG
 
         const mat4& getProjectionMatrix() const;
         void updateProjectionMatrix();
+        
+        void update(bool recursively = true);
     };
 }

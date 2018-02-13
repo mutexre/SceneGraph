@@ -13,10 +13,13 @@ Object::Object() : name("")
 Object::Object(const string& name) : name(name)
 {}
 
+Object::Object(string&& name) : name(move(name))
+{}
+
 Object::~Object()
 {}
 
-shared_ptr<Context> Object::getContext() const {
+const shared_ptr<Context>& Object::getContext() const {
     return context;
 }
 
@@ -24,10 +27,14 @@ void Object::setContext(const shared_ptr<Context>& context) {
     this->context = context;
 }
 
-string Object::getName() const {
+const string& Object::getName() const {
     return name;
 }
 
 void Object::setName(const string& name) {
     this->name = name;
+}
+
+void Object::setName(string&& name) {
+    this->name = move(name);
 }

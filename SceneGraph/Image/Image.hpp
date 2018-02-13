@@ -6,7 +6,7 @@
 namespace SG
 {
     vector<char>
-    loadImage(const char* path,
+    loadImage(const string& path,
               unsigned& w, unsigned& h, unsigned& bytesPerRow,
               ColorComponents& colorComponents,
               PixelDataType& pixelDataType,
@@ -47,13 +47,18 @@ namespace SG
 
     public:
         Image();
-        Image(const char* path, bool flipVertical, bool flipHorizontal);
         Image(const string& path, bool flipVertical, bool flipHorizontal);
         
         Image(char* data, int w, int h,
               ColorComponents, PixelDataType,
               Option<int> bytesPerRow = Option<int>(),
               bool copyDataToInternalStorage = false);
+        
+        Image(const Image&) = default;
+        Image& operator=(Image&) = default;
+        
+        Image(Image&&) = default;
+        Image& operator=(Image&&) = default;
         
         virtual ~Image();
 

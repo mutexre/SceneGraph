@@ -23,19 +23,19 @@ ImageStack::ImageStack(const vector<string>& paths, bool flipVertical, bool flip
 ImageStack::~ImageStack()
 {}
 
-ImageStack::ImageStack(const ImageStack& image)
-{
-    w = image.w;
-    h = image.h;
-    components = image.components;
-    dataType = image.dataType;
-    
-    subImages.clear();
-    for (auto& subImage : image.subImages) {
-        auto copy = shared_ptr<Image>(new Image(*subImage));
-        subImages.push_back(copy);
-    }
-}
+//ImageStack::ImageStack(const ImageStack& image)
+//{
+//    w = image.w;
+//    h = image.h;
+//    components = image.components;
+//    dataType = image.dataType;
+//
+//    subImages.clear();
+//    for (auto& subImage : image.subImages) {
+//        auto copy = shared_ptr<Image>(new Image(*subImage));
+//        subImages.push_back(copy);
+//    }
+//}
 
 unsigned ImageStack::getW() const {
     return w;

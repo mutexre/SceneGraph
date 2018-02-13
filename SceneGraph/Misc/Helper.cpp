@@ -43,11 +43,12 @@ Option<string> getStringFromCFString(CFStringRef cfstr, unsigned maxChars = 2 * 
     return Option<string>();
 }
 
-Option<string> SG::findResourcePathByName(CFBundleRef bundle, const char* name, const char* ext) {
-    auto _name = CFStringCreateWithCString(kCFAllocatorDefault, name, kCFStringEncodingUTF8);
+Option<string> SG::findResourcePathByName(CFBundleRef bundle, const string& name, const string& ext)
+{
+    auto _name = CFStringCreateWithCString(kCFAllocatorDefault, name.c_str(), kCFStringEncodingUTF8);
     CFUniqueStr fileName{ _name, cfDeleter };
 
-    auto _ext = CFStringCreateWithCString(kCFAllocatorDefault, ext, kCFStringEncodingUTF8);
+    auto _ext = CFStringCreateWithCString(kCFAllocatorDefault, ext.c_str(), kCFStringEncodingUTF8);
     CFUniqueStr fileExt{ _ext, cfDeleter };
 
     auto _url = CFBundleCopyResourceURL(bundle, fileName.get(), fileExt.get(), nullptr);
@@ -61,12 +62,8 @@ Option<string> SG::findResourcePathByName(CFBundleRef bundle, const char* name, 
     return Option<string>();
 }
 
-Option<string> SG::findResourcePathByName(const char* name, const char* ext) {
-    return findResourcePathByName(CFBundleGetMainBundle(), name, ext);
-}
-
 Option<string> SG::findResourcePathByName(const string& name, const string& ext) {
-    return findResourcePathByName(name.c_str(), ext.c_str());
+    return findResourcePathByName(CFBundleGetMainBundle(), name, ext);
 }
 
 #endif
@@ -141,7 +138,7 @@ double SG::getTime()
 #endif
 
 
-Option<SG::Program::Source> SG::readProgramSource(const char* vertex, const char* fragment)
+Option<SG::Program::Source> SG::readProgramSource(const string& vertex, const string& fragment)
 {
     Program::Source src;
 
@@ -150,13 +147,13 @@ Option<SG::Program::Source> SG::readProgramSource(const char* vertex, const char
     if (bundle) {
         auto vertexShaderPath = findResourcePathByName(bundle, vertex, "vert");
         if (!vertexShaderPath) {
-            printf("vertex shader not found: %s\n", vertex);
+            printf("vertex shader not found: %s\n", vertex.c_str());
             return Option<SG::Program::Source>();
         }
 
         auto fragmentShaderPath = findResourcePathByName(bundle, fragment, "frag");
         if (!fragmentShaderPath) {
-            printf("fragment shader not found: %s\n", fragment);
+            printf("fragment shader not found: %s\n", fragment.c_str());
             return Option<SG::Program::Source>();
         }
 

@@ -19,7 +19,7 @@ MeshNode::MeshNode(const string& name,
     setMaterial(material);
 }
 
-shared_ptr<Mesh>& MeshNode::getMesh() {
+const shared_ptr<Mesh>& MeshNode::getMesh() const {
     return mesh;
 }
 
@@ -28,7 +28,7 @@ MeshNode& MeshNode::setMesh(const shared_ptr<Mesh>& mesh) {
     return *this;
 }
 
-shared_ptr<Material>& MeshNode::getMaterial() {
+const shared_ptr<Material>& MeshNode::getMaterial() const {
     return material;
 }
 
@@ -37,7 +37,8 @@ MeshNode& MeshNode::setMaterial(const shared_ptr<Material>& material) {
     return *this;
 }
 
-void MeshNode::draw(const shared_ptr<Scene>& scene, const shared_ptr<Camera>& camera)
+void MeshNode::draw(const shared_ptr<Scene>& scene,
+                    const shared_ptr<Camera>& camera)
 {
     if (mesh)
     {
@@ -46,11 +47,11 @@ void MeshNode::draw(const shared_ptr<Scene>& scene, const shared_ptr<Camera>& ca
 
         material->bind();
 
-        if (material->isParameterActive("worldMatrix"))
-            material->set("worldMatrix", matrix.world);
+        if (material->isParameterActive("world.matrix"))
+            material->set("world.matrix", matrix.world);
         
-        if (material->isParameterActive("worldNormalMatrix"))
-            material->set("worldNormalMatrix", worldNormalMatrix);
+        if (material->isParameterActive("world.normalMatrix"))
+            material->set("world.normalMatrix", worldNormalMatrix);
         
         if (material->isParameterActive("skybox.transform"))
             material->set("skybox.transform", skyboxWorldMatrix);
@@ -60,20 +61,20 @@ void MeshNode::draw(const shared_ptr<Scene>& scene, const shared_ptr<Camera>& ca
         
         if (camera)
         {
-            const auto& viewMatrix = camera->getViewMatrix();
-            auto worldViewMatrix = viewMatrix * matrix.world;
-            auto viewNormalMatrix = inverseTranspose(mat3(worldViewMatrix));
-            auto& projectionMatrix = camera->getProjectionMatrix();
+            const mat4& viewMatrix = camera->getViewMatrix();
+            mat4 worldViewMatrix = viewMatrix * matrix.world;
+            mat3 viewNormalMatrix = inverseTranspose(mat3(worldViewMatrix));
+            const mat4& projectionMatrix = camera->getProjectionMatrix();
 
             vec4 cameraWorldCoord = camera->getWorldMatrix() * vec4(0.f, 0.f, 0.f, 1.f);
             cameraWorldCoord /= cameraWorldCoord.w;
             vec3 cameraWorldCoordXYZ(cameraWorldCoord);
-        
+            
             if (material->isParameterActive("worldViewMatrix"))
                 material->set("worldViewMatrix", worldViewMatrix);
             
-            if (material->isParameterActive("viewNormalMatrix"))
-                material->set("viewNormalMatrix", viewNormalMatrix);
+            if (material->isParameterActive("view.normalMatrix"))
+                material->set("view.normalMatrix", viewNormalMatrix);
             
             if (material->isParameterActive("view.matrix"))
                 material->set("view.matrix", viewMatrix);

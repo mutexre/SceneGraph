@@ -15,8 +15,8 @@ TextureMaterialRGBA::TextureMaterialRGBA(const shared_ptr<Context>& context,
                                          const shared_ptr<Program>& program,
                                          const shared_ptr<Texture>& color,
                                          const shared_ptr<Texture>& alpha,
-                                         mat3 colorUvTransform,
-                                         mat3 alphaUvTransform)
+                                         const mat3& colorUvTransform,
+                                         const mat3& alphaUvTransform)
  : TextureMaterialRGBA(context)
 {
     setProgram(program);
@@ -52,11 +52,11 @@ TextureMaterialRGBA::setAlphaTexture(const shared_ptr<Texture>& texture)
     return *this;
 }
 
-mat3 TextureMaterialRGBA::getColorUvTransform() const {
+const mat3& TextureMaterialRGBA::getColorUvTransform() const {
     return uvTransform.color;
 }
 
-TextureMaterialRGBA& TextureMaterialRGBA::setColorUvTransform(mat3 m)
+TextureMaterialRGBA& TextureMaterialRGBA::setColorUvTransform(const mat3& m)
 {
     uvTransform.color = m;
     
@@ -77,11 +77,11 @@ void TextureMaterialRGBA::syncColorUvTransform()
     sync.uvTransform.color = true;
 }
 
-mat3 TextureMaterialRGBA::getAlphaUvTransform() const {
+const mat3& TextureMaterialRGBA::getAlphaUvTransform() const {
     return uvTransform.alpha;
 }
 
-TextureMaterialRGBA& TextureMaterialRGBA::setAlphaUvTransform(mat3 m)
+TextureMaterialRGBA& TextureMaterialRGBA::setAlphaUvTransform(const mat3& m)
 {
     uvTransform.alpha = m;
     

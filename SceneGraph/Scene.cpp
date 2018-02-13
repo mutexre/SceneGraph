@@ -17,7 +17,7 @@ Scene::~Scene()
 void Scene::init()
 {}
 
-shared_ptr<Context> Scene::getContext() const {
+const shared_ptr<Context>& Scene::getContext() const {
     return context;
 }
 
@@ -68,7 +68,7 @@ void Scene::removeLight(const shared_ptr<Light>& light) {
     lights.erase(light);
 }
 
-shared_ptr<Node> Scene::getRoot() const {
+const shared_ptr<Node>& Scene::getRoot() const {
     return root;
 }
 

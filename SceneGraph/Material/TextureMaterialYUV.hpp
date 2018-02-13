@@ -61,19 +61,19 @@ namespace SG
                            const shared_ptr<Program>&,
                            const shared_ptr<Texture>& y,
                            const shared_ptr<Texture>& uv,
-                           mat3 colorConversion,
-                           mat3 yTransform = mat3(1),
-                           mat3 uvTransform = mat3(1));
+                           const mat3& colorConversion,
+                           const mat3& yTransform = mat3(1),
+                           const mat3& uvTransform = mat3(1));
         
         TextureMaterialYUV(const shared_ptr<Context>&,
                            const shared_ptr<Program>&,
                            const shared_ptr<Texture>& y,
                            const shared_ptr<Texture>& u,
                            const shared_ptr<Texture>& v,
-                           mat3 colorConversion,
-                           mat3 yTransform = mat3(1),
-                           mat3 uTransform = mat3(1),
-                           mat3 vTransform = mat3(1));
+                           const mat3& colorConversion,
+                           const mat3& yTransform = mat3(1),
+                           const mat3& uTransform = mat3(1),
+                           const mat3& vTransform = mat3(1));
         
         Mode getMode() const;
         void setMode(Mode);
@@ -90,19 +90,19 @@ namespace SG
         shared_ptr<Texture>& getUV();
         TextureMaterialYUV& setUV(const shared_ptr<Texture>&);
         
-        mat3 getColorConversion() const;
+        const mat3& getColorConversion() const;
         TextureMaterialYUV& setColorConversion(const mat3&);
         
-        mat3 getUvTransformY() const;
-        TextureMaterialYUV& setUvTransformY(mat3);
+        const mat3& getUvTransformY() const;
+        TextureMaterialYUV& setUvTransformY(const mat3&);
 
-        mat3 getUvTransformU() const;
-        TextureMaterialYUV& setUvTransformU(mat3);
+        const mat3& getUvTransformU() const;
+        TextureMaterialYUV& setUvTransformU(const mat3&);
         
-        mat3 getUvTransformV() const;
-        TextureMaterialYUV& setUvTransformV(mat3);
+        const mat3& getUvTransformV() const;
+        TextureMaterialYUV& setUvTransformV(const mat3&);
         
-        mat3 getUvTransformUV() const;
-        TextureMaterialYUV& setUvTransformUV(mat3);
+        const mat3& getUvTransformUV() const;
+        TextureMaterialYUV& setUvTransformUV(const mat3&);
     };
 }

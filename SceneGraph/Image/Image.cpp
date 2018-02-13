@@ -11,16 +11,12 @@ using namespace SG;
 Image::Image()
 {}
 
-Image::Image(const char* path, bool flipVertical, bool flipHorizontal)
+Image::Image(const string& path, bool flipVertical, bool flipHorizontal)
 {
     storage.type = StorageType::internal;
     storage.internal = loadImage(path, w, h, bytesPerRow, components, dataType, flipVertical, flipHorizontal);
     data = storage.internal.data();
 }
-
-Image::Image(const string& path, bool flipVertical, bool flipHorizontal)
-    : Image(path.c_str(), flipVertical, flipHorizontal)
-{}
 
 Image::Image(char* data, int w, int h,
              ColorComponents components,
@@ -103,7 +99,7 @@ void Image::copyDataToInternalStorage()
 }
 
 vector<char>
-SG::loadImage(const char* path,
+SG::loadImage(const string& path,
               unsigned& w, unsigned& h, unsigned& bytesPerRow,
               ColorComponents& colorComponents,
               PixelDataType& pixelDataType,
@@ -112,7 +108,7 @@ SG::loadImage(const char* path,
 {
 #ifdef __APPLE__
     CFUnique<CGDataProvider> dataProvider{
-        CGDataProviderCreateWithFilename(path),
+        CGDataProviderCreateWithFilename(path.c_str()),
         cfDeleter
     };
     
@@ -121,7 +117,7 @@ SG::loadImage(const char* path,
 
     bool isJPG = false;
     
-    const char* end = strrchr(path, '.');
+    const char* end = strrchr(path.c_str(), '.');
     if (strcmp(end, ".jpg") == 0 || strcmp(end, ".jpeg") == 0)
         isJPG = true;
     

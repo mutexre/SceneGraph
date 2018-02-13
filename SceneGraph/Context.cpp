@@ -123,19 +123,19 @@ shared_ptr<Texture> Context::createTexture(Texture::Type type, PixelFormat forma
 
 #pragma mark - Programs
 
-const map<string, shared_ptr<Program>>& Context::getPrograms() {
+const map<string, shared_ptr<Program>>& Context::getPrograms() const {
     return programs;
 }
 
-const shared_ptr<Program>& Context::getProgram(const char* name) {
-    return programs[name];
+const shared_ptr<Program>& Context::getProgram(const string& name) const {
+    return programs.at(name);
 }
 
-void Context::loadProgram(const char* name, const char* vertex, const char* fragment) {
-    addProgram(name, loadProgram(vertex, fragment));
+void Context::loadProgram(const string& name, const string& vertex, const string& fragment) {
+    setProgram(name, loadProgram(vertex, fragment));
 }
 
-void Context::addProgram(const string& name, const shared_ptr<Program>& program) {
+void Context::setProgram(const string& name, const shared_ptr<Program>& program) {
     programs[name] = program;
 }
 

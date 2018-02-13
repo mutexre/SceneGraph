@@ -57,7 +57,7 @@ namespace SG
 
         Mesh& enableDirectMode(bool = true);
 
-        shared_ptr<Program>& getProgram();
+        const shared_ptr<Program>& getProgram() const;
         Mesh& setProgram(const shared_ptr<Program>&);
 
         const vector<unsigned>& getIndices() const;

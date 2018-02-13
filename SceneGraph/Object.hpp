@@ -14,12 +14,14 @@ namespace SG
     public:
         Object();
         Object(const string&);
+        Object(string&&);
         virtual ~Object();
 
-        shared_ptr<Context> getContext() const;
+        const shared_ptr<Context>& getContext() const;
         void setContext(const shared_ptr<Context>&);
 
-        string getName() const;
+        const string& getName() const;
         void setName(const string&);
+        void setName(string&&);
     };
 }

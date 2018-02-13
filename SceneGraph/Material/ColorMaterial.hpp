@@ -23,7 +23,7 @@ namespace SG
                       const shared_ptr<Program>&,
                       vec4 color);
         
-        vec4 getColor() const;
+        const vec4& getColor() const;
         void setColor(vec4);
     };
 }

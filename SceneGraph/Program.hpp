@@ -34,7 +34,7 @@ namespace SG
         int getUseCount() const;
         void adjustUseCount(int amount);
         
-        shared_ptr<Binary> getBinary();
+        const shared_ptr<Binary>& getBinary() const;
         
         virtual bool isVertexAttributeActive(const string&) = 0;
         virtual bool isUniformActive(const string&) = 0;

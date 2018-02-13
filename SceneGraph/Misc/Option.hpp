@@ -12,33 +12,34 @@ public:
     bool defined;
     T value;
 
-    Option() : defined(false) {}
-    Option(T val) : defined(true), value(val) {}
+    Option() : defined(false)
+    {}
 
-    void define(T&& value) {
-        defined = true;
-        this->value = move(value);
-    }
+    Option(const T& val) : defined(true), value(val)
+    {}
+
+    Option(T&& val) : defined(true), value(move(val))
+    {}
 
     void define(const T& value) {
         defined = true;
         this->value = value;
     }
 
+    void define(T&& value) {
+        defined = true;
+        this->value = move(value);
+    }
+
     void undefine() {
         defined = false;
     }
 
-    T get() const {
+    const T& get() const {
         return value;
     }
 
-    T getOrElse(T defaultValue) {
-        return defined ? value : defaultValue;
-    }
-
-    T getOrExecute(function<void()> f) {
-        if (!defined) f();
+    T& get() {
         return value;
     }
 
@@ -50,7 +51,8 @@ public:
         return &value;
     }
 
-    bool operator==(const Option<T>& o) const {
+    bool operator==(const Option<T>& o) const
+    {
         if (defined == o.defined) {
             if (defined)
                 return value == o.value;
@@ -69,8 +71,13 @@ public:
         return defined;
     }
     
-    Option<T>& operator=(T x) {
+    Option<T>& operator=(const T& x) {
         define(x);
+        return *this;
+    }
+    
+    Option<T>& operator=(T&& x) {
+        define(move(x));
         return *this;
     }
 };

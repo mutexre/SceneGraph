@@ -19,11 +19,11 @@ PhongMaterial& PhongMaterial::setMode(ShadingModel mode) {
     return *this;
 }
 
-vec3 PhongMaterial::getEmissive() const {
+const vec3& PhongMaterial::getEmissive() const {
     return emissive;
 }
 
-PhongMaterial& PhongMaterial::setEmissive(vec3 rgb) {
+PhongMaterial& PhongMaterial::setEmissive(const vec3& rgb) {
     emissive = rgb;
     return *this;
 }
@@ -40,11 +40,11 @@ PhongMaterial& PhongMaterial::setEmissive(float c) {
     return *this;
 }
 
-vec3 PhongMaterial::getAmbientReflectance() const {
+const vec3& PhongMaterial::getAmbientReflectance() const {
     return reflectance.ambient;
 }
 
-PhongMaterial& PhongMaterial::setAmbient(vec3 rgb) {
+PhongMaterial& PhongMaterial::setAmbient(const vec3& rgb) {
     reflectance.ambient = rgb;
     return *this;
 }
@@ -61,11 +61,11 @@ PhongMaterial& PhongMaterial::setAmbient(float c) {
     return *this;
 }
 
-vec3 PhongMaterial::getDiffuseReflectance() const {
+const vec3& PhongMaterial::getDiffuseReflectance() const {
     return reflectance.diffuse;
 }
 
-PhongMaterial& PhongMaterial::setDiffuse(vec3 rgb) {
+PhongMaterial& PhongMaterial::setDiffuse(const vec3& rgb) {
     reflectance.diffuse = rgb;
     return *this;
 }
@@ -82,11 +82,11 @@ PhongMaterial& PhongMaterial::setDiffuse(float c) {
     return *this;
 }
 
-vec3 PhongMaterial::getSpecularReflectance() const {
+const vec3& PhongMaterial::getSpecularReflectance() const {
     return reflectance.specular;
 }
 
-PhongMaterial& PhongMaterial::setSpecular(vec3 rgb) {
+PhongMaterial& PhongMaterial::setSpecular(const vec3& rgb) {
     reflectance.specular = rgb;
     return *this;
 }
@@ -148,7 +148,7 @@ PhongMaterial& PhongMaterial::setDoubleSided(bool d)
 
 #pragma mark Textures
 
-shared_ptr<Texture> PhongMaterial::getDiffuseTexture() const {
+const shared_ptr<Texture>& PhongMaterial::getDiffuseTexture() const {
     return textures.diffuse;
 }
 
@@ -157,7 +157,7 @@ PhongMaterial& PhongMaterial::setDiffuseTexture(const shared_ptr<Texture>& textu
     return *this;
 }
 
-shared_ptr<Texture> PhongMaterial::getBumpTexture() const {
+const shared_ptr<Texture>& PhongMaterial::getBumpTexture() const {
     return textures.bump;
 }
 
@@ -166,7 +166,7 @@ PhongMaterial& PhongMaterial::setBumpTexture(const shared_ptr<Texture>& texture)
     return *this;
 }
 
-shared_ptr<Texture> PhongMaterial::getSkyboxTexture() const {
+const shared_ptr<Texture>& PhongMaterial::getSkyboxTexture() const {
     return textures.skybox;
 }
 
@@ -175,7 +175,7 @@ PhongMaterial& PhongMaterial::setSkyboxTexture(const shared_ptr<Texture>& textur
     return *this;
 }
 
-shared_ptr<Texture> PhongMaterial::getAmbienceTexture() const {
+const shared_ptr<Texture>& PhongMaterial::getAmbienceTexture() const {
     return textures.ambience;
 }
 

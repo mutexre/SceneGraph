@@ -52,10 +52,10 @@ namespace SG
                             const shared_ptr<Texture>& luma,
                             const shared_ptr<Texture>& chroma,
                             const shared_ptr<Texture>& alpha,
-                            mat3 colorConversion,
-                            mat3 lumaUvTransform = mat3(1),
-                            mat3 chromaUvTransform = mat3(1),
-                            mat3 alphaUvTransform = mat3(1));
+                            const mat3& colorConversion,
+                            const mat3& lumaUvTransform = mat3(1),
+                            const mat3& chromaUvTransform = mat3(1),
+                            const mat3& alphaUvTransform = mat3(1));
 
         shared_ptr<Texture>& getLumaTexture();
         TextureMaterialYUVA& setLumaTexture(const shared_ptr<Texture>&);
@@ -66,16 +66,16 @@ namespace SG
         shared_ptr<Texture>& getAlphaTexture();
         TextureMaterialYUVA& setAlphaTexture(const shared_ptr<Texture>&);
         
-        mat3 getColorConversion() const;
+        const mat3& getColorConversion() const;
         TextureMaterialYUVA& setColorConversion(const mat3&);
         
-        mat3 getLumaUvTransform() const;
-        TextureMaterialYUVA& setLumaUvTransform(mat3);
+        const mat3& getLumaUvTransform() const;
+        TextureMaterialYUVA& setLumaUvTransform(const mat3&);
         
-        mat3 getChromaUvTransform() const;
-        TextureMaterialYUVA& setChromaUvTransform(mat3);
+        const mat3& getChromaUvTransform() const;
+        TextureMaterialYUVA& setChromaUvTransform(const mat3&);
         
-        mat3 getAlphaUvTransform() const;
-        TextureMaterialYUVA& setAlphaUvTransform(mat3);
+        const mat3& getAlphaUvTransform() const;
+        TextureMaterialYUVA& setAlphaUvTransform(const mat3&);
     };
 }

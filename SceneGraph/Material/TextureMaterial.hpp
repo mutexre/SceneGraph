@@ -31,7 +31,7 @@ namespace SG
         shared_ptr<Texture>& getTexture();
         TextureMaterial& setTexture(const shared_ptr<Texture>&);
         
-        mat3 getUvTransform() const;
-        TextureMaterial& setUvTransform(mat3);
+        const mat3& getUvTransform() const;
+        TextureMaterial& setUvTransform(const mat3&);
     };
 }

@@ -32,11 +32,11 @@ TextureMaterial& TextureMaterial::setTexture(const shared_ptr<Texture>& t)
     return *this;
 }
 
-mat3 TextureMaterial::getUvTransform() const {
+const mat3& TextureMaterial::getUvTransform() const {
     return uvTransform;
 }
 
-TextureMaterial& TextureMaterial::setUvTransform(mat3 m)
+TextureMaterial& TextureMaterial::setUvTransform(const mat3& m)
 {
     uvTransform = m;
 

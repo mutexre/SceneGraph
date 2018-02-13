@@ -12,7 +12,8 @@ namespace SG
         shared_ptr<Material> material;
 
     protected:
-        virtual void draw(const shared_ptr<Scene>&, const shared_ptr<Camera>&) override;
+        virtual void draw(const shared_ptr<Scene>&,
+                          const shared_ptr<Camera>&) override;
 
     public:
         MeshNode();
@@ -21,10 +22,10 @@ namespace SG
                  const shared_ptr<Mesh>& mesh = nullptr,
                  const shared_ptr<Material>& material = nullptr);
         
-        shared_ptr<Mesh>& getMesh();
+        const shared_ptr<Mesh>& getMesh() const;
         MeshNode& setMesh(const shared_ptr<Mesh>&);
         
-        shared_ptr<Material>& getMaterial();
+        const shared_ptr<Material>& getMaterial() const;
         MeshNode& setMaterial(const shared_ptr<Material>&);
     };
 }

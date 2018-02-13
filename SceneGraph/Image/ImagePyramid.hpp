@@ -17,6 +17,13 @@ namespace SG
     public:
         ImagePyramid();
         ImagePyramid(const shared_ptr<T>&, Option<unsigned> levelCount = Option<unsigned>());
+        
+        ImagePyramid(const ImagePyramid&) = default;
+        ImagePyramid& operator=(ImagePyramid&) = default;
+        
+        ImagePyramid(ImagePyramid&&) = default;
+        ImagePyramid& operator=(ImagePyramid&&) = default;
+        
         virtual ~ImagePyramid();
         
         void init(const shared_ptr<T>&, Option<unsigned> levelCount = Option<unsigned>());

@@ -29,8 +29,8 @@ namespace SG
         activeObjects;
         
     protected:
-        virtual shared_ptr<Program> loadProgram(const char* vertexShaderName,
-                                                const char* fragmentShaderName) = 0;
+        virtual shared_ptr<Program> loadProgram(const string& vertexShaderName,
+                                                const string& fragmentShaderName) = 0;
         
         void activateSurface(Surface::Target,
                              Option<shared_ptr<Surface>>&,
@@ -77,10 +77,11 @@ namespace SG
     
     #pragma mark - Programs
         
-        const map<string, shared_ptr<Program>>& getPrograms();
-        const shared_ptr<Program>& getProgram(const char*);
-        void loadProgram(const char* name, const char* vertex, const char* fragment);
-        void addProgram(const string& name, const shared_ptr<Program>& program);
+        const map<string, shared_ptr<Program>>& getPrograms() const;
+        const shared_ptr<Program>& getProgram(const string&) const;
+        
+        void loadProgram(const string& name, const string& vertex, const string& fragment);
+        void setProgram(const string& name, const shared_ptr<Program>& program);
         void removeProgram(const string& name);
         virtual shared_ptr<Program> cloneProgram(const char* name) = 0;
         

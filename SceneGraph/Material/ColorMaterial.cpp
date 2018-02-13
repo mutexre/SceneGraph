@@ -20,7 +20,7 @@ ColorMaterial::ColorMaterial(const shared_ptr<Context>& context,
     setColor(color);
 }
 
-vec4 ColorMaterial::getColor() const {
+const vec4& ColorMaterial::getColor() const {
     return color;
 }
 

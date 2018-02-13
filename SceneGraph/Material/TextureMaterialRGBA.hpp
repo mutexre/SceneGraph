@@ -52,8 +52,8 @@ namespace SG
                             const shared_ptr<Program>&,
                             const shared_ptr<Texture>& color,
                             const shared_ptr<Texture>& alpha,
-                            mat3 colorUvTransform,
-                            mat3 alphaUvTransform);
+                            const mat3& colorUvTransform,
+                            const mat3& alphaUvTransform);
         
         shared_ptr<Texture>& getColorTexture();
         TextureMaterialRGBA& setColorTexture(const shared_ptr<Texture>&);
@@ -61,11 +61,11 @@ namespace SG
         shared_ptr<Texture>& getAlphaTexture();
         TextureMaterialRGBA& setAlphaTexture(const shared_ptr<Texture>&);
         
-        mat3 getColorUvTransform() const;
-        TextureMaterialRGBA& setColorUvTransform(mat3);
+        const mat3& getColorUvTransform() const;
+        TextureMaterialRGBA& setColorUvTransform(const mat3&);
         
-        mat3 getAlphaUvTransform() const;
-        TextureMaterialRGBA& setAlphaUvTransform(mat3);
+        const mat3& getAlphaUvTransform() const;
+        TextureMaterialRGBA& setAlphaUvTransform(const mat3&);
         
         Option<float> getFixedAlpha() const;
         TextureMaterialRGBA& setFixedAlpha(const Option<float>&);

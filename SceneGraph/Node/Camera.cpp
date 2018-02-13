@@ -97,7 +97,8 @@ const mat4& Camera::getProjectionMatrix() const {
     return projectionMatrix;
 }
 
-mat4 Camera::getProjectionMatrix(ProjectionType type, float fov, float near, float far, float aspect) {
+mat4 Camera::getProjectionMatrix(ProjectionType type, float fov, float near, float far, float aspect)
+{
     switch (type) {
         case ProjectionType::orthogonal:
             return ortho(-1.f, +1.f, -aspect, +aspect, near, far);
@@ -111,4 +112,14 @@ mat4 Camera::getProjectionMatrix(ProjectionType type, float fov, float near, flo
 
 void Camera::updateProjectionMatrix() {
     projectionMatrix = getProjectionMatrix(projectionType, fov.value, near, far, aspect);
+}
+
+void Camera::update(bool recursively)
+{
+    if (recursively)
+        updateWorldMatrixRecursively();
+    else
+        updateWorldMatrix();
+    
+    updateViewMatrix();
 }

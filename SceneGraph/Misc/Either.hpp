@@ -40,25 +40,59 @@ public:
 
     Either() {}
 
-    Either(A a) {
+    Either(const A& a) {
         state.define(0);
         this->a = a;
     }
 
-    Either(B b) {
+    Either(A&& a) {
+        state.define(0);
+        this->a = move(a);
+    }
+
+    Either(const B& b) {
         state.define(1);
         this->b = b;
     }
 
-    A getA() const {
-        if (!state.defined) throw StateIsNotDefined();
-        if (state.get() == 1) throw ValueIsNotDefined(state.get());
+    Either(B&& b) {
+        state.define(1);
+        this->b = move(b);
+    }
+
+    const A& getA() const
+    {
+        if (!state.defined)
+            throw StateIsNotDefined();
+        if (state.get() == 1)
+            throw ValueIsNotDefined(state.get());
         return a;
     }
 
-    B getB() const {
-        if (!state.defined) throw StateIsNotDefined();
-        if (state.get() == 0) throw ValueIsNotDefined(state.get());
+    A& getA()
+    {
+        if (!state.defined)
+            throw StateIsNotDefined();
+        if (state.get() == 1)
+            throw ValueIsNotDefined(state.get());
+        return a;
+    }
+
+    const B& getB() const
+    {
+        if (!state.defined)
+            throw StateIsNotDefined();
+        if (state.get() == 0)
+            throw ValueIsNotDefined(state.get());
+        return b;
+    }
+
+    B& getB()
+    {
+        if (!state.defined)
+            throw StateIsNotDefined();
+        if (state.get() == 0)
+            throw ValueIsNotDefined(state.get());
         return b;
     }
 
@@ -66,11 +100,20 @@ public:
         this->a = a;
     }
 
+    void setA(A&& a) {
+        this->a = move(a);
+    }
+
     void setB(const B& b) {
         this->b = b;
     }
 
+    void setB(B&& b) {
+        this->b = move(b);
+    }
+
     State toggle() {
         state = !state;
+        return state;
     }
 };

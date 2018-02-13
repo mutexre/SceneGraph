@@ -38,14 +38,14 @@ namespace SG
 
         virtual void init();
 
-        shared_ptr<Context> getContext() const;
+        const shared_ptr<Context>& getContext() const;
         void setContext(const shared_ptr<Context>&);
 
         shared_ptr<Node> findNode(const string& nodeName);
 
         virtual void draw(const shared_ptr<Camera>& = nullptr);
         
-        shared_ptr<Node> getRoot() const;
+        const shared_ptr<Node>& getRoot() const;
         void setRoot(const shared_ptr<Node>&);
 
         void setGlobalAmbient(const vec3&);
