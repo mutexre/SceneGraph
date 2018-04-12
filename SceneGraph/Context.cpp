@@ -6,6 +6,8 @@
 #include <SceneGraph/SceneGraph.hpp>
 
 using namespace SG;
+using namespace std;
+using namespace glm;
 
 Context::Context(OS os) {
     this->os = os;
@@ -90,6 +92,34 @@ void Context::activate(int textureUnit, const shared_ptr<Texture>& texture)
 }
 
 #pragma mark - Factory Methods
+
+shared_ptr<Node> Context::createNode()
+{
+    auto node = make_shared<Node>();
+    node->setContext(shared_from_this());
+    return node;
+}
+
+shared_ptr<MeshNode> Context::createMeshNode()
+{
+    auto node = make_shared<MeshNode>();
+    node->setContext(shared_from_this());
+    return node;
+}
+
+shared_ptr<Light> Context::createLight()
+{
+    auto light = make_shared<Light>();
+    light->setContext(shared_from_this());
+    return light;
+}
+
+shared_ptr<Camera> Context::createCamera()
+{
+    auto camera = make_shared<Camera>();
+    camera->setContext(shared_from_this());
+    return camera;
+}
 
 shared_ptr<Node> Context::createNode(const string& name) {
     auto node = createNode();

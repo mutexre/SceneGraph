@@ -23,20 +23,20 @@ namespace SG
         
         virtual void attach(AttachmentPoint,
                             unsigned attachmentIndex,
-                            const shared_ptr<Texture>&,
+                            const std::shared_ptr<Texture>&,
                             unsigned level = 0,
                             unsigned cubeMapSide = 0) = 0;
         
         void attach(AttachmentPoint,
-                    const shared_ptr<SG::Texture>&,
+                    const std::shared_ptr<SG::Texture>&,
                     unsigned level = 0,
                     unsigned cubeMapSide = 0);
         
         virtual void attach(AttachmentPoint,
                             unsigned attachmentIndex,
-                            const shared_ptr<Renderbuffer>&) = 0;
+                            const std::shared_ptr<Renderbuffer>&) = 0;
         
-        void attach(AttachmentPoint, const shared_ptr<Renderbuffer>&);
+        void attach(AttachmentPoint, const std::shared_ptr<Renderbuffer>&);
         
         virtual void detach(AttachmentPoint, unsigned attachmentIndex = 0) = 0;
         

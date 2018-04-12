@@ -23,19 +23,19 @@ namespace SG
         float shininess = 16;
         float reflectivity = 0;
 
-        vec3 emissive = { 0, 0, 0 };
+        glm::vec3 emissive = { 0, 0, 0 };
 
         struct {
-            vec3 ambient  = { 1, 1, 1 };
-            vec3 diffuse  = { 1, 1, 1 };
-            vec3 specular = { 1, 1, 1 };
+            glm::vec3 ambient  = { 1, 1, 1 };
+            glm::vec3 diffuse  = { 1, 1, 1 };
+            glm::vec3 specular = { 1, 1, 1 };
         }
         reflectance;
 
-        vec3 refractionIndex = { 1, 1, 1 };
+        glm::vec3 refractionIndex = { 1, 1, 1 };
 
         struct {
-            shared_ptr<Texture> diffuse, bump, skybox, ambience;
+            std::shared_ptr<Texture> diffuse, bump, skybox, ambience;
         }
         textures;
         
@@ -101,28 +101,28 @@ namespace SG
         void syncAmbienceIntensity();
 
     public:
-        PhongMaterial(const shared_ptr<Context>&);
+        PhongMaterial(const std::shared_ptr<Context>&);
 
         ShadingModel getMode() const;
         PhongMaterial& setMode(ShadingModel);
 
-        const vec3& getEmissive() const;
-        PhongMaterial& setEmissive(const vec3&);
+        const glm::vec3& getEmissive() const;
+        PhongMaterial& setEmissive(const glm::vec3&);
         PhongMaterial& setEmissive(float r, float g, float b);
         PhongMaterial& setEmissive(float);
 
-        const vec3& getAmbientReflectance() const;
-        PhongMaterial& setAmbient(const vec3&);
+        const glm::vec3& getAmbientReflectance() const;
+        PhongMaterial& setAmbient(const glm::vec3&);
         PhongMaterial& setAmbient(float r, float g, float b);
         PhongMaterial& setAmbient(float);
 
-        const vec3& getDiffuseReflectance() const;
-        PhongMaterial& setDiffuse(const vec3&);
+        const glm::vec3& getDiffuseReflectance() const;
+        PhongMaterial& setDiffuse(const glm::vec3&);
         PhongMaterial& setDiffuse(float r, float g, float b);
         PhongMaterial& setDiffuse(float);
 
-        const vec3& getSpecularReflectance() const;
-        PhongMaterial& setSpecular(const vec3&);
+        const glm::vec3& getSpecularReflectance() const;
+        PhongMaterial& setSpecular(const glm::vec3&);
         PhongMaterial& setSpecular(float r, float g, float b);
         PhongMaterial& setSpecular(float);
 
@@ -138,17 +138,17 @@ namespace SG
         bool getDoubleSided() const;
         PhongMaterial& setDoubleSided(bool);
 
-        const shared_ptr<Texture>& getDiffuseTexture() const;
-        PhongMaterial& setDiffuseTexture(const shared_ptr<Texture>&);
+        const std::shared_ptr<Texture>& getDiffuseTexture() const;
+        PhongMaterial& setDiffuseTexture(const std::shared_ptr<Texture>&);
         
-        const shared_ptr<Texture>& getBumpTexture() const;
-        PhongMaterial& setBumpTexture(const shared_ptr<Texture>&);
+        const std::shared_ptr<Texture>& getBumpTexture() const;
+        PhongMaterial& setBumpTexture(const std::shared_ptr<Texture>&);
         
-        const shared_ptr<Texture>& getSkyboxTexture() const;
-        PhongMaterial& setSkyboxTexture(const shared_ptr<Texture>&);
+        const std::shared_ptr<Texture>& getSkyboxTexture() const;
+        PhongMaterial& setSkyboxTexture(const std::shared_ptr<Texture>&);
 
-        const shared_ptr<Texture>& getAmbienceTexture() const;
-        PhongMaterial& setAmbienceTexture(const shared_ptr<Texture>&);
+        const std::shared_ptr<Texture>& getAmbienceTexture() const;
+        PhongMaterial& setAmbienceTexture(const std::shared_ptr<Texture>&);
         
         bool isSkyboxAmbienceMapEnabled() const;
         PhongMaterial& enableSkyboxAmbienceMap(bool = true);

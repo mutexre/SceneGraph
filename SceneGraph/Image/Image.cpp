@@ -7,6 +7,8 @@
 #import <stb/stb_image_resize.h>
 
 using namespace SG;
+using namespace std;
+using namespace glm;
 
 Image::Image()
 {}

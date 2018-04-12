@@ -8,7 +8,7 @@ ImagePyramid<T>::ImagePyramid()
 {}
 
 template <typename T>
-ImagePyramid<T>::ImagePyramid(const shared_ptr<T>& image, Option<unsigned> levelCount) {
+ImagePyramid<T>::ImagePyramid(const std::shared_ptr<T>& image, Option<unsigned> levelCount) {
     init(image, levelCount);
 }
 
@@ -17,7 +17,7 @@ ImagePyramid<T>::~ImagePyramid()
 {}
 
 template <typename T>
-unsigned ImagePyramid<T>::calcNumberOfLevels(const shared_ptr<T>& image)
+unsigned ImagePyramid<T>::calcNumberOfLevels(const std::shared_ptr<T>& image)
 {
     int w = image->getW();
     int h = image->getH();
@@ -36,7 +36,7 @@ unsigned ImagePyramid<T>::calcNumberOfLevels(const shared_ptr<T>& image)
 }
 
 template <typename T>
-void ImagePyramid<T>::init(const shared_ptr<T>& image, Option<unsigned> levelCount)
+void ImagePyramid<T>::init(const std::shared_ptr<T>& image, Option<unsigned> levelCount)
 {
     images.clear();
     images.push_back(image);
@@ -62,6 +62,6 @@ void ImagePyramid<T>::init(const shared_ptr<T>& image, Option<unsigned> levelCou
 }
 
 template <typename T>
-const vector<shared_ptr<T>>& ImagePyramid<T>::getImages() const {
+const std::vector<std::shared_ptr<T>>& ImagePyramid<T>::getImages() const {
     return images;
 }

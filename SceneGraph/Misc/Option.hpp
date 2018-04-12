@@ -18,7 +18,7 @@ public:
     Option(const T& val) : defined(true), value(val)
     {}
 
-    Option(T&& val) : defined(true), value(move(val))
+    Option(T&& val) : defined(true), value(std::move(val))
     {}
 
     void define(const T& value) {
@@ -28,7 +28,7 @@ public:
 
     void define(T&& value) {
         defined = true;
-        this->value = move(value);
+        this->value = std::move(value);
     }
 
     void undefine() {
@@ -77,7 +77,7 @@ public:
     }
     
     Option<T>& operator=(T&& x) {
-        define(move(x));
+        define(std::move(x));
         return *this;
     }
 };

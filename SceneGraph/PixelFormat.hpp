@@ -27,10 +27,10 @@ namespace SG
             int size;
         };
         
-        vector<Range> ranges;
-        vector<int> rangeOffsets;
+        std::vector<Range> ranges;
+        std::vector<int> rangeOffsets;
         int components = 0;
-        map<Component, int> componentRanges;
+        std::map<Component, int> componentRanges;
         
         bool hasComponent(Component c)
         {

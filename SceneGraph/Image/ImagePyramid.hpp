@@ -9,14 +9,14 @@ namespace SG
     class ImagePyramid
     {
     protected:
-        vector<shared_ptr<T>> images;
+        std::vector<std::shared_ptr<T>> images;
     
     protected:
-        static unsigned calcNumberOfLevels(const shared_ptr<T>& image);
+        static unsigned calcNumberOfLevels(const std::shared_ptr<T>& image);
     
     public:
         ImagePyramid();
-        ImagePyramid(const shared_ptr<T>&, Option<unsigned> levelCount = Option<unsigned>());
+        ImagePyramid(const std::shared_ptr<T>&, Option<unsigned> levelCount = Option<unsigned>());
         
         ImagePyramid(const ImagePyramid&) = default;
         ImagePyramid& operator=(ImagePyramid&) = default;
@@ -26,9 +26,9 @@ namespace SG
         
         virtual ~ImagePyramid();
         
-        void init(const shared_ptr<T>&, Option<unsigned> levelCount = Option<unsigned>());
+        void init(const std::shared_ptr<T>&, Option<unsigned> levelCount = Option<unsigned>());
         
-        const vector<shared_ptr<T>>& getImages() const;
+        const std::vector<std::shared_ptr<T>>& getImages() const;
     };
     
     #include <SceneGraph/ImagePyramidDefinition.hpp>

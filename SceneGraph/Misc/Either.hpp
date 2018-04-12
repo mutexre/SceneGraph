@@ -10,7 +10,7 @@ public:
     using State = unsigned char;
 
 public:
-    class StateIsNotDefined : exception
+    class StateIsNotDefined : std::exception
     {
     public:
         virtual const char* what() const throw() {
@@ -18,7 +18,7 @@ public:
         }
     };
 
-    class ValueIsNotDefined : exception
+    class ValueIsNotDefined : std::exception
     {
     protected:
         State state;

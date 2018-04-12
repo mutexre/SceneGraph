@@ -6,6 +6,8 @@
 #include <SceneGraph/SceneGraph.hpp>
 
 using namespace SG;
+using namespace std;
+using namespace glm;
 
 TextureMaterialYUV::TextureMaterialYUV(const shared_ptr<Context>& context)
  : Material(context)

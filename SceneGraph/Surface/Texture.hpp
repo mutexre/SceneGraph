@@ -57,12 +57,12 @@ namespace SG
         }
         lod;
 
-        vec4 borderColor{0};
+        glm::vec4 borderColor{0};
         float priority = 1;
 
     protected:
-        virtual void setImages(const vector<shared_ptr<Image>>&) = 0;
-        virtual void setImages(const vector<shared_ptr<ImageStack>>&) = 0;
+        virtual void setImages(const std::vector<std::shared_ptr<Image>>&) = 0;
+        virtual void setImages(const std::vector<std::shared_ptr<ImageStack>>&) = 0;
 
     public:
         Texture();
@@ -83,8 +83,8 @@ namespace SG
                                            unsigned levelsCount = 1,
                                            unsigned layersCount = 1) = 0;
         
-        void setImage(const shared_ptr<Image>&);
-        void setImage(const shared_ptr<ImageStack>&);
+        void setImage(const std::shared_ptr<Image>&);
+        void setImage(const std::shared_ptr<ImageStack>&);
         void setImage(Image&);
         
         virtual void setImage(const void* data,
@@ -109,7 +109,7 @@ namespace SG
                                  unsigned layer = 0) = 0;
         
         template <typename T>
-        void setImages(const shared_ptr<ImagePyramid<T>>&);
+        void setImages(const std::shared_ptr<ImagePyramid<T>>&);
 
         virtual void bind(unsigned short target = 0) = 0;
         
@@ -148,15 +148,15 @@ namespace SG
         float getMaxLevel() const;
         void setMaxLevel(float);
 
-        vec4 getBorderColor() const;
-        void setBorderColor(vec4 c);
+        glm::vec4 getBorderColor() const;
+        void setBorderColor(glm::vec4 c);
 
         float getPriority() const;
         void setPriority(float p);
     };
     
     template <typename T>
-    void Texture::setImages(const shared_ptr<ImagePyramid<T>>& imagePyramid) {
+    void Texture::setImages(const std::shared_ptr<ImagePyramid<T>>& imagePyramid) {
         setImages(imagePyramid->getImages());
     }
 }

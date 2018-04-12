@@ -5,6 +5,10 @@
 
 #include <SceneGraph/SceneGraph.hpp>
 
+using namespace SG;
+using namespace std;
+using namespace glm;
+
 void SG::Grid2D::fillVertexAttributes(shared_ptr<Mesh>& mesh,
                                       uvec2 dims,
                                       bool verticallyFlipUVs)

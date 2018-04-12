@@ -6,7 +6,7 @@
 namespace SG
 {
     class Node : public virtual Object,
-                 public enable_shared_from_this<Node>
+                 public std::enable_shared_from_this<Node>
     {
     public:
         enum class Type {
@@ -21,45 +21,45 @@ namespace SG
         bool visible = true;
         bool visibilityInheritance;
         Option<Settings> settings;
-        weak_ptr<Node> parent;
-        list<shared_ptr<Node>> children;
-        Option<function<void(Node*, double)>> animateFunc;
+        std::weak_ptr<Node> parent;
+        std::list<std::shared_ptr<Node>> children;
+        Option<std::function<void(Node*, double)>> animateFunc;
         unsigned lightGroup = 0;
         
         struct {
-            mat4 model, world;
+            glm::mat4 model, world;
         }
         matrix;
     
     protected:
-        virtual void draw(const shared_ptr<Scene>&, const shared_ptr<Camera>&);
+        virtual void draw(const std::shared_ptr<Scene>&, const std::shared_ptr<Camera>&);
 
     public:
         Node();
-        Node(const string& name);
-        Node(Type, const string& name);
+        Node(const std::string& name);
+        Node(Type, const std::string& name);
 
         void init();
 
         Type getType() const;
         Node& setType(Type);
 
-        const weak_ptr<Node>& getParent() const;
-        Node& setParent(const shared_ptr<Node>&);
+        const std::weak_ptr<Node>& getParent() const;
+        Node& setParent(const std::shared_ptr<Node>&);
 
-        const list<shared_ptr<Node>>& getChildren() const;
-        void addChild(const shared_ptr<Node>&);
-        void insertChildAtIndex(const shared_ptr<Node>&, int index);
-        void insertChildPriorToAnotherChild(const shared_ptr<Node>& node, const shared_ptr<Node>& another);
-        void insertChildNextToAnotherChild(const shared_ptr<Node>& node, const shared_ptr<Node>& another);
-        void insertFirstChild(const shared_ptr<Node>&);
-        void insertLastChild(const shared_ptr<Node>&);
-        void removeChild(const shared_ptr<Node>&);
+        const std::list<std::shared_ptr<Node>>& getChildren() const;
+        void addChild(const std::shared_ptr<Node>&);
+        void insertChildAtIndex(const std::shared_ptr<Node>&, int index);
+        void insertChildPriorToAnotherChild(const std::shared_ptr<Node>& node, const std::shared_ptr<Node>& another);
+        void insertChildNextToAnotherChild(const std::shared_ptr<Node>& node, const std::shared_ptr<Node>& another);
+        void insertFirstChild(const std::shared_ptr<Node>&);
+        void insertLastChild(const std::shared_ptr<Node>&);
+        void removeChild(const std::shared_ptr<Node>&);
         void removeChildAtIndex(unsigned);
         void removeAllChildren();
         void exchangeChildren(unsigned a, unsigned b);
-        void sendToBack(const shared_ptr<Node>&);
-        void bringToFront(const shared_ptr<Node>&);
+        void sendToBack(const std::shared_ptr<Node>&);
+        void bringToFront(const std::shared_ptr<Node>&);
 
         bool isVisible() const;
         Node& setVisible(bool visible = true);
@@ -74,29 +74,29 @@ namespace SG
         Node& setSettings(const Settings&);
         void removeSettings();
 
-        const shared_ptr<Mesh>& getMesh() const;
-        Node& setMesh(const shared_ptr<Mesh>&);
+        const std::shared_ptr<Mesh>& getMesh() const;
+        Node& setMesh(const std::shared_ptr<Mesh>&);
 
         void animate(double t, bool recursive = false);
-        Node& setAnimation(const Option<function<void(Node*, double)>>&);
+        Node& setAnimation(const Option<std::function<void(Node*, double)>>&);
 
-        const mat4& getModelMatrix() const;
-        mat4& getModelMatrix();
-        void setModelMatrix(const mat4&);
+        const glm::mat4& getModelMatrix() const;
+        glm::mat4& getModelMatrix();
+        void setModelMatrix(const glm::mat4&);
 
-        const mat4& getWorldMatrix() const;
+        const glm::mat4& getWorldMatrix() const;
         void updateWorldMatrix();
         void updateWorldMatrixRecursively();
 
         unsigned getLightGroup() const;
         void setLightGroup(unsigned g);
 
-        void traverse(const function<bool(shared_ptr<Node>&)>&);
+        void traverse(const std::function<bool(std::shared_ptr<Node>&)>&);
 
-        shared_ptr<Node> findSubNode(const string& subNodeName);
+        std::shared_ptr<Node> findSubNode(const std::string& subNodeName);
 
-        void drawRecursively(const shared_ptr<Scene>&,
-                             const shared_ptr<Camera>&,
+        void drawRecursively(const std::shared_ptr<Scene>&,
+                             const std::shared_ptr<Camera>&,
                              Settings combinedSettings = Settings());
 
         void print();

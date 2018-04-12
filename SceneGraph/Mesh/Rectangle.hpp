@@ -7,15 +7,15 @@
 
 namespace SG::Rect
 {
-    void fillVertexAttributes(shared_ptr<Mesh>&, bool verticallyFlipUVs = true);
+    void fillVertexAttributes(std::shared_ptr<Mesh>&, bool verticallyFlipUVs = true);
 
-    void fillIndices(shared_ptr<Mesh>&, PrimitivesType);
+    void fillIndices(std::shared_ptr<Mesh>&, PrimitivesType);
 
-    void make(shared_ptr<Mesh>&,
+    void make(std::shared_ptr<Mesh>&,
               PrimitivesType,
               bool verticallyFlipUVs = true);
     
-    void stroke(shared_ptr<Mesh>&, bool verticallyFlipUVs = true);
+    void stroke(std::shared_ptr<Mesh>&, bool verticallyFlipUVs = true);
     
-    void fill(shared_ptr<Mesh>&, bool verticallyFlipUVs = true);
+    void fill(std::shared_ptr<Mesh>&, bool verticallyFlipUVs = true);
 }

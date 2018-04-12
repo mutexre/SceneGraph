@@ -8,6 +8,10 @@
 #include <sstream>
 #include <SceneGraph/SceneGraph.hpp>
 
+using namespace SG;
+using namespace std;
+using namespace glm;
+
 #ifdef __ANDROID__
     #include <android/asset_manager.h>
     #include <android/asset_manager_jni.h>

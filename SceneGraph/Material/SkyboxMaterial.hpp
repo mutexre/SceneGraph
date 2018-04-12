@@ -8,7 +8,7 @@ namespace SG
     class SkyboxMaterial : public Material
     {
     protected:
-        shared_ptr<Texture> texture;
+        std::shared_ptr<Texture> texture;
 
         float lod = 0;
         bool lodSynced;
@@ -22,15 +22,15 @@ namespace SG
         void syncLod();
 
     public:
-        SkyboxMaterial(const shared_ptr<Context>&);
+        SkyboxMaterial(const std::shared_ptr<Context>&);
 
-        SkyboxMaterial(const shared_ptr<Context>&,
-                       const shared_ptr<Program>&,
-                       const shared_ptr<Texture>&,
+        SkyboxMaterial(const std::shared_ptr<Context>&,
+                       const std::shared_ptr<Program>&,
+                       const std::shared_ptr<Texture>&,
                        float lod);
 
-        const shared_ptr<Texture>& getTexture() const;
-        SkyboxMaterial& setTexture(const shared_ptr<Texture>&);
+        const std::shared_ptr<Texture>& getTexture() const;
+        SkyboxMaterial& setTexture(const std::shared_ptr<Texture>&);
         
         float getLod() const;
         SkyboxMaterial& setLod(float);

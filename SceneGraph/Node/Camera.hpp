@@ -26,15 +26,15 @@ namespace SG
             0, 0, 0
         };
         
-        mat4 viewMatrix, projectionMatrix;
+        glm::mat4 viewMatrix, projectionMatrix;
     
     public:
-        static mat4 getProjectionMatrix(ProjectionType, float fov, float near, float far, float aspect);
+        static glm::mat4 getProjectionMatrix(ProjectionType, float fov, float near, float far, float aspect);
 
     public:
         Camera();
-        Camera(const string& name);
-        Camera(const string& name, ProjectionType, float fov, float near, float far, float aspect);
+        Camera(const std::string& name);
+        Camera(const std::string& name, ProjectionType, float fov, float near, float far, float aspect);
 
         ProjectionType getProjectionType() const;
         Camera& setProjectionType(ProjectionType);
@@ -57,10 +57,10 @@ namespace SG
         float getAspectRatio() const;
         Camera& setAspectRatio(float);
 
-        const mat4& getViewMatrix() const;
+        const glm::mat4& getViewMatrix() const;
         void updateViewMatrix();
 
-        const mat4& getProjectionMatrix() const;
+        const glm::mat4& getProjectionMatrix() const;
         void updateProjectionMatrix();
         
         void update(bool recursively = true);

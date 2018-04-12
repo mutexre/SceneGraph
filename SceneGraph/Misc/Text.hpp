@@ -5,26 +5,27 @@
 
 namespace SG
 {
-    vec2 getTextRectSize(const char* text,
-                         const char* fontName,
-                         float fontSize,
-                         float maxWidth = 0,
-                         float maxHeight = 0);
+    glm::vec2
+    getTextRectSize(const char* text,
+                    const char* fontName,
+                    float fontSize,
+                    float maxWidth = 0,
+                    float maxHeight = 0);
 
-    vector<char>
+    std::vector<char>
     createTextBitmap(const char* text,
                      const char* fontName,
                      float fontSize,
-                     vec4 backgroundColor,
-                     vec4 fontColor,
+                     glm::vec4 backgroundColor,
+                     glm::vec4 fontColor,
                      unsigned w, unsigned h);
     
-    shared_ptr<Texture>
+    std::shared_ptr<Texture>
     createTextureFromText(const char* text,
                           const char* fontName,
                           float fontSize,
-                          vec4 backgroundColor,
-                          vec4 fontColor,
+                          glm::vec4 backgroundColor,
+                          glm::vec4 fontColor,
                           unsigned w, unsigned h,
-                          const shared_ptr<Context>&);
+                          const std::shared_ptr<Context>&);
 }

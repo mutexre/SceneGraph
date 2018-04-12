@@ -6,6 +6,7 @@
 #include <SceneGraph/SceneGraph.hpp>
 
 using namespace SG;
+using namespace glm;
 
 void Transform::Rotation::update()
 {

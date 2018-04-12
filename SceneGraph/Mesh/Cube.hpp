@@ -7,10 +7,10 @@
 
 namespace SG::Cube
 {
-    void fillVertexAttributes(shared_ptr<Mesh>&);
-    void fillIndices(shared_ptr<Mesh>&, PrimitivesType);
-    void make(shared_ptr<Mesh>&, PrimitivesType);
+    void fillVertexAttributes(std::shared_ptr<Mesh>&);
+    void fillIndices(std::shared_ptr<Mesh>&, PrimitivesType);
+    void make(std::shared_ptr<Mesh>&, PrimitivesType);
     
-    void stroke(shared_ptr<Mesh>&);
-    void fill(shared_ptr<Mesh>&);
+    void stroke(std::shared_ptr<Mesh>&);
+    void fill(std::shared_ptr<Mesh>&);
 }

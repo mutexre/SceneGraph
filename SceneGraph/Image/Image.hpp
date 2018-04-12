@@ -5,8 +5,8 @@
 
 namespace SG
 {
-    vector<char>
-    loadImage(const string& path,
+    std::vector<char>
+    loadImage(const std::string& path,
               unsigned& w, unsigned& h, unsigned& bytesPerRow,
               ColorComponents& colorComponents,
               PixelDataType& pixelDataType,
@@ -30,7 +30,7 @@ namespace SG
         
         struct {
             StorageType type;
-            vector<char> internal;
+            std::vector<char> internal;
             char* external;
         }
         storage;
@@ -47,7 +47,7 @@ namespace SG
 
     public:
         Image();
-        Image(const string& path, bool flipVertical, bool flipHorizontal);
+        Image(const std::string& path, bool flipVertical, bool flipHorizontal);
         
         Image(char* data, int w, int h,
               ColorComponents, PixelDataType,
@@ -85,8 +85,8 @@ namespace SG
         char* getData();
 
         bool resample(unsigned w, unsigned h);
-        shared_ptr<Image> getResampledImage(unsigned w, unsigned h) const;
+        std::shared_ptr<Image> getResampledImage(unsigned w, unsigned h) const;
         
-        mat3 calcPaddingUvTransform() const;
+        glm::mat3 calcPaddingUvTransform() const;
     };
 }

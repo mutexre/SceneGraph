@@ -8,20 +8,20 @@ namespace SG
     class Object
     {
     protected:
-        shared_ptr<Context> context;
-        string name;
+        std::shared_ptr<Context> context;
+        std::string name;
 
     public:
         Object();
-        Object(const string&);
-        Object(string&&);
+        Object(const std::string&);
+        Object(std::string&&);
         virtual ~Object();
 
-        const shared_ptr<Context>& getContext() const;
-        void setContext(const shared_ptr<Context>&);
+        const std::shared_ptr<Context>& getContext() const;
+        void setContext(const std::shared_ptr<Context>&);
 
-        const string& getName() const;
-        void setName(const string&);
-        void setName(string&&);
+        const std::string& getName() const;
+        void setName(const std::string&);
+        void setName(std::string&&);
     };
 }

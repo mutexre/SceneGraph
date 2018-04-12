@@ -11,14 +11,14 @@ namespace SG
         unsigned w, h;
         ColorComponents components;
         PixelDataType dataType;
-        vector<shared_ptr<Image>> subImages;
+        std::vector<std::shared_ptr<Image>> subImages;
 
     private:
-        void updateStateBasedOnImage(const shared_ptr<Image>&);
+        void updateStateBasedOnImage(const std::shared_ptr<Image>&);
         
     public:
         ImageStack();
-        ImageStack(const vector<string>&, bool flipVertical, bool flipHorizontal);
+        ImageStack(const std::vector<std::string>&, bool flipVertical, bool flipHorizontal);
 
         ImageStack(const ImageStack&) = default;
         ImageStack& operator=(ImageStack&) = default;
@@ -38,9 +38,9 @@ namespace SG
         const char* getData(unsigned z) const;
         char* getData(unsigned z);
 
-        const shared_ptr<Image>& operator[](unsigned z) const;
+        const std::shared_ptr<Image>& operator[](unsigned z) const;
 
         void resample(unsigned w, unsigned h);
-        shared_ptr<ImageStack> getResampledImage(unsigned w, unsigned h) const;
+        std::shared_ptr<ImageStack> getResampledImage(unsigned w, unsigned h) const;
     };
 }

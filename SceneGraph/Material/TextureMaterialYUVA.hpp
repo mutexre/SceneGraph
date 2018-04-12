@@ -9,16 +9,16 @@ namespace SG
     {
     protected:
         struct {
-            shared_ptr<Texture> luma, chroma, alpha;
+            std::shared_ptr<Texture> luma, chroma, alpha;
         }
         textures;
 
-        mat3 colorConversion;
+        glm::mat3 colorConversion;
         
         struct {
-            mat3 luma {1};
-            mat3 chroma {1};
-            mat3 alpha {1};
+            glm::mat3 luma {1};
+            glm::mat3 chroma {1};
+            glm::mat3 alpha {1};
         }
         uvTransform;
     
@@ -45,37 +45,37 @@ namespace SG
         void syncAlphaUvTransform();
     
     public:
-        TextureMaterialYUVA(const shared_ptr<Context>&);
+        TextureMaterialYUVA(const std::shared_ptr<Context>&);
 
-        TextureMaterialYUVA(const shared_ptr<Context>&,
-                            const shared_ptr<Program>&,
-                            const shared_ptr<Texture>& luma,
-                            const shared_ptr<Texture>& chroma,
-                            const shared_ptr<Texture>& alpha,
-                            const mat3& colorConversion,
-                            const mat3& lumaUvTransform = mat3(1),
-                            const mat3& chromaUvTransform = mat3(1),
-                            const mat3& alphaUvTransform = mat3(1));
+        TextureMaterialYUVA(const std::shared_ptr<Context>&,
+                            const std::shared_ptr<Program>&,
+                            const std::shared_ptr<Texture>& luma,
+                            const std::shared_ptr<Texture>& chroma,
+                            const std::shared_ptr<Texture>& alpha,
+                            const glm::mat3& colorConversion,
+                            const glm::mat3& lumaUvTransform = glm::mat3(1),
+                            const glm::mat3& chromaUvTransform = glm::mat3(1),
+                            const glm::mat3& alphaUvTransform = glm::mat3(1));
 
-        shared_ptr<Texture>& getLumaTexture();
-        TextureMaterialYUVA& setLumaTexture(const shared_ptr<Texture>&);
+        std::shared_ptr<Texture>& getLumaTexture();
+        TextureMaterialYUVA& setLumaTexture(const std::shared_ptr<Texture>&);
         
-        shared_ptr<Texture>& getChromaTexture();
-        TextureMaterialYUVA& setChromaTexture(const shared_ptr<Texture>&);
+        std::shared_ptr<Texture>& getChromaTexture();
+        TextureMaterialYUVA& setChromaTexture(const std::shared_ptr<Texture>&);
         
-        shared_ptr<Texture>& getAlphaTexture();
-        TextureMaterialYUVA& setAlphaTexture(const shared_ptr<Texture>&);
+        std::shared_ptr<Texture>& getAlphaTexture();
+        TextureMaterialYUVA& setAlphaTexture(const std::shared_ptr<Texture>&);
         
-        const mat3& getColorConversion() const;
-        TextureMaterialYUVA& setColorConversion(const mat3&);
+        const glm::mat3& getColorConversion() const;
+        TextureMaterialYUVA& setColorConversion(const glm::mat3&);
         
-        const mat3& getLumaUvTransform() const;
-        TextureMaterialYUVA& setLumaUvTransform(const mat3&);
+        const glm::mat3& getLumaUvTransform() const;
+        TextureMaterialYUVA& setLumaUvTransform(const glm::mat3&);
         
-        const mat3& getChromaUvTransform() const;
-        TextureMaterialYUVA& setChromaUvTransform(const mat3&);
+        const glm::mat3& getChromaUvTransform() const;
+        TextureMaterialYUVA& setChromaUvTransform(const glm::mat3&);
         
-        const mat3& getAlphaUvTransform() const;
-        TextureMaterialYUVA& setAlphaUvTransform(const mat3&);
+        const glm::mat3& getAlphaUvTransform() const;
+        TextureMaterialYUVA& setAlphaUvTransform(const glm::mat3&);
     };
 }

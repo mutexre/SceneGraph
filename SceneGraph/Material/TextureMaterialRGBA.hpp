@@ -9,12 +9,12 @@ namespace SG
     {
     protected:
         struct {
-            shared_ptr<Texture> color, alpha;
+            std::shared_ptr<Texture> color, alpha;
         }
         textures;
         
         struct {
-            mat3 color{1}, alpha{1};
+            glm::mat3 color{1}, alpha{1};
         }
         uvTransform;
         
@@ -46,26 +46,26 @@ namespace SG
         void syncFixedAlphaValue();
 
     public:
-        TextureMaterialRGBA(const shared_ptr<Context>&);
+        TextureMaterialRGBA(const std::shared_ptr<Context>&);
         
-        TextureMaterialRGBA(const shared_ptr<Context>&,
-                            const shared_ptr<Program>&,
-                            const shared_ptr<Texture>& color,
-                            const shared_ptr<Texture>& alpha,
-                            const mat3& colorUvTransform,
-                            const mat3& alphaUvTransform);
+        TextureMaterialRGBA(const std::shared_ptr<Context>&,
+                            const std::shared_ptr<Program>&,
+                            const std::shared_ptr<Texture>& color,
+                            const std::shared_ptr<Texture>& alpha,
+                            const glm::mat3& colorUvTransform,
+                            const glm::mat3& alphaUvTransform);
         
-        shared_ptr<Texture>& getColorTexture();
-        TextureMaterialRGBA& setColorTexture(const shared_ptr<Texture>&);
+        std::shared_ptr<Texture>& getColorTexture();
+        TextureMaterialRGBA& setColorTexture(const std::shared_ptr<Texture>&);
         
-        shared_ptr<Texture>& getAlphaTexture();
-        TextureMaterialRGBA& setAlphaTexture(const shared_ptr<Texture>&);
+        std::shared_ptr<Texture>& getAlphaTexture();
+        TextureMaterialRGBA& setAlphaTexture(const std::shared_ptr<Texture>&);
         
-        const mat3& getColorUvTransform() const;
-        TextureMaterialRGBA& setColorUvTransform(const mat3&);
+        const glm::mat3& getColorUvTransform() const;
+        TextureMaterialRGBA& setColorUvTransform(const glm::mat3&);
         
-        const mat3& getAlphaUvTransform() const;
-        TextureMaterialRGBA& setAlphaUvTransform(const mat3&);
+        const glm::mat3& getAlphaUvTransform() const;
+        TextureMaterialRGBA& setAlphaUvTransform(const glm::mat3&);
         
         Option<float> getFixedAlpha() const;
         TextureMaterialRGBA& setFixedAlpha(const Option<float>&);

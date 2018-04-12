@@ -8,7 +8,7 @@ namespace SG
     class ColorMaterial : public Material
     {
     protected:
-        vec4 color;
+        glm::vec4 color;
         bool colorSynced;
 
     protected:
@@ -17,13 +17,13 @@ namespace SG
         void syncColor();
 
     public:
-        ColorMaterial(const shared_ptr<Context>&);
+        ColorMaterial(const std::shared_ptr<Context>&);
         
-        ColorMaterial(const shared_ptr<Context>&,
-                      const shared_ptr<Program>&,
-                      vec4 color);
+        ColorMaterial(const std::shared_ptr<Context>&,
+                      const std::shared_ptr<Program>&,
+                      glm::vec4 color);
         
-        const vec4& getColor() const;
-        void setColor(vec4);
+        const glm::vec4& getColor() const;
+        void setColor(glm::vec4);
     };
 }

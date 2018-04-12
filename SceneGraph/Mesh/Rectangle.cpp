@@ -5,6 +5,10 @@
 
 #include <SceneGraph/SceneGraph.hpp>
 
+using namespace SG;
+using namespace std;
+using namespace glm;
+
 void SG::Rect::fillVertexAttributes(shared_ptr<Mesh>& mesh, bool verticallyFlipUVs)
 {
     mesh->setCoordSystem(CoordSystem::cartesian);

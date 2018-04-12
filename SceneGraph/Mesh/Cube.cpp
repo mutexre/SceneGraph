@@ -5,6 +5,10 @@
 
 #include <SceneGraph/SceneGraph.hpp>
 
+using namespace SG;
+using namespace std;
+using namespace glm;
+
 void SG::Cube::fillVertexAttributes(shared_ptr<Mesh>& mesh)
 {
     mesh->setCoordSystem(CoordSystem::cartesian);

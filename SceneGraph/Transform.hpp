@@ -13,8 +13,8 @@ namespace SG
     {
         struct Component {
             bool enabled;
-            vec3 xyz;
-            mat4 matrix;
+            glm::vec3 xyz;
+            glm::mat4 matrix;
             virtual void update() = 0;
         };
 
@@ -30,7 +30,7 @@ namespace SG
         struct Rotation: public Component
         {
             RotationOrder order;
-            mat4 postRotation;
+            glm::mat4 postRotation;
             Rotation() {
                 xyz.x = xyz.y = xyz.z = 0;
             }

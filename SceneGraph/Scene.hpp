@@ -6,65 +6,65 @@
 namespace SG
 {
     class Scene : public virtual Object,
-                  public enable_shared_from_this<Scene>
+                  public std::enable_shared_from_this<Scene>
     {
         friend class MeshNode;
         
     protected:
-        shared_ptr<Context> context;
-        shared_ptr<Node> root = nullptr;
+        std::shared_ptr<Context> context;
+        std::shared_ptr<Node> root = nullptr;
 
-        set<shared_ptr<Light>> lights;
+        std::set<std::shared_ptr<Light>> lights;
 
 //        unsigned lightCount = 8;
 
-        vec3 globalAmbient{ 0.f };
-        shared_ptr<Camera> defaultCamera;
-        shared_ptr<Node> skybox;
+        glm::vec3 globalAmbient{ 0.f };
+        std::shared_ptr<Camera> defaultCamera;
+        std::shared_ptr<Node> skybox;
         
-        vec4 clearColor { 0, 0, 0, 1};
+        glm::vec4 clearColor { 0, 0, 0, 1};
         float clearDepth = 0.f;
 
     private:
         unsigned currentLightGroup = 0;
 
     protected:
-        virtual void setLightsOnGPU(const shared_ptr<Program>&,
-                                    const mat4& viewMatrix) = 0;
+        virtual void setLightsOnGPU(const std::shared_ptr<Program>&,
+                                    const glm::mat4& viewMatrix) = 0;
 
     public:
-        Scene(const shared_ptr<Context>&);
+        Scene(const std::shared_ptr<Context>&);
         virtual ~Scene();
 
         virtual void init();
 
-        const shared_ptr<Context>& getContext() const;
-        void setContext(const shared_ptr<Context>&);
+        const std::shared_ptr<Context>& getContext() const;
+        void setContext(const std::shared_ptr<Context>&);
 
-        shared_ptr<Node> findNode(const string& nodeName);
+        std::shared_ptr<Node> findNode(const std::string& nodeName);
 
-        virtual void draw(const shared_ptr<Camera>& = nullptr);
+        virtual void draw(const std::shared_ptr<Camera>& = nullptr);
         
-        const shared_ptr<Node>& getRoot() const;
-        void setRoot(const shared_ptr<Node>&);
+        const std::shared_ptr<Node>& getRoot() const;
+        void setRoot(const std::shared_ptr<Node>&);
 
-        void setGlobalAmbient(const vec3&);
+        void setGlobalAmbient(const glm::vec3&);
         void enableLights(bool enable = true);
-        void setDefaultCamera(const shared_ptr<Camera>&);
+        void setDefaultCamera(const std::shared_ptr<Camera>&);
 
-        const shared_ptr<Node>& getSkybox() const;
-        void setSkybox(const shared_ptr<Node>&);
+        const std::shared_ptr<Node>& getSkybox() const;
+        void setSkybox(const std::shared_ptr<Node>&);
 
         unsigned getLightCount() const;
         void setLightCount(unsigned);
 
-        void addNode(const shared_ptr<Node>&, const shared_ptr<Node>& where = nullptr);
+        void addNode(const std::shared_ptr<Node>&, const std::shared_ptr<Node>& where = nullptr);
 
-        set<shared_ptr<Light>> getLight(const char* name);
+        std::set<std::shared_ptr<Light>> getLight(const char* name);
 
-        void addLight(const shared_ptr<Light>&, const shared_ptr<Node>& where);
-        void addLight(const shared_ptr<Light>&);
-        void removeLight(const shared_ptr<Light>&);
+        void addLight(const std::shared_ptr<Light>&, const std::shared_ptr<Node>& where);
+        void addLight(const std::shared_ptr<Light>&);
+        void removeLight(const std::shared_ptr<Light>&);
 
         void animate(double time);
 

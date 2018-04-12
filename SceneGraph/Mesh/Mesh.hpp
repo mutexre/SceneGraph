@@ -10,14 +10,14 @@ namespace SG
     protected:
         CoordSystem coordSystem = CoordSystem::cartesian;
         PrimitivesType primitivesType = PrimitivesType::triangles;
-        shared_ptr<Program> program;
+        std::shared_ptr<Program> program;
 
         struct {
-            vector<vec4> coords;
-            vector<vec3> normals;
-            vector<vec4> colors;
-            vector<vec2> uvs;
-            vector<unsigned> indices;
+            std::vector<glm::vec4> coords;
+            std::vector<glm::vec3> normals;
+            std::vector<glm::vec4> colors;
+            std::vector<glm::vec2> uvs;
+            std::vector<unsigned> indices;
         }
         data;
 
@@ -57,28 +57,28 @@ namespace SG
 
         Mesh& enableDirectMode(bool = true);
 
-        const shared_ptr<Program>& getProgram() const;
-        Mesh& setProgram(const shared_ptr<Program>&);
+        const std::shared_ptr<Program>& getProgram() const;
+        Mesh& setProgram(const std::shared_ptr<Program>&);
 
-        const vector<unsigned>& getIndices() const;
-        vector<unsigned>& getIndices();
-        Mesh& setIndices(const vector<unsigned>&);
+        const std::vector<unsigned>& getIndices() const;
+        std::vector<unsigned>& getIndices();
+        Mesh& setIndices(const std::vector<unsigned>&);
 
-        const vector<vec4>& getCoords() const;
-        vector<vec4>& getCoords();
-        Mesh& setCoords(const vector<vec4>&);
+        const std::vector<glm::vec4>& getCoords() const;
+        std::vector<glm::vec4>& getCoords();
+        Mesh& setCoords(const std::vector<glm::vec4>&);
 
-        const vector<vec3>& getNormals() const;
-        vector<vec3>& getNormals();
-        Mesh& setNormals(const vector<vec3>&);
+        const std::vector<glm::vec3>& getNormals() const;
+        std::vector<glm::vec3>& getNormals();
+        Mesh& setNormals(const std::vector<glm::vec3>&);
         
-        const vector<vec4>& getColors() const;
-        vector<vec4>& getColors();
-        Mesh& setColors(const vector<vec4>&);
+        const std::vector<glm::vec4>& getColors() const;
+        std::vector<glm::vec4>& getColors();
+        Mesh& setColors(const std::vector<glm::vec4>&);
 
-        const vector<vec2>& getUVs() const;
-        vector<vec2>& getUVs();
-        Mesh& setUVs(const vector<vec2>&);
+        const std::vector<glm::vec2>& getUVs() const;
+        std::vector<glm::vec2>& getUVs();
+        Mesh& setUVs(const std::vector<glm::vec2>&);
         
         void clearIndices();
         void clearCoords();

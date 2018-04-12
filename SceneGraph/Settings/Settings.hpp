@@ -52,7 +52,7 @@ namespace SG
         
         public:
             Option<bool> enabled;
-            Option<vec4> color;
+            Option<glm::vec4> color;
             
             bool separate;
             
@@ -72,13 +72,13 @@ namespace SG
             
             Blend(Func src, Func dst,
                   Equation eq = Equation::add,
-                  vec4 color = { 1, 1, 1, 1 });
+                  glm::vec4 color = { 1, 1, 1, 1 });
             
             Blend(Func srcRGB, Func srcAlpha,
                   Func dstRGB, Func dstAlpha,
                   Equation eqRGB = Equation::add,
                   Equation eqAlpha = Equation::add,
-                  vec4 color = { 1, 1, 1, 1 });
+                  glm::vec4 color = { 1, 1, 1, 1 });
             
             void disable();
             
@@ -89,14 +89,14 @@ namespace SG
         struct Scissor
         {
             Option<bool> enabled;
-            Option<ivec4> rect;
+            Option<glm::ivec4> rect;
             
             Scissor();
-            Scissor(ivec4);
+            Scissor(glm::ivec4);
             Scissor(unsigned x, unsigned y, unsigned w, unsigned h);
             
             void disable();
-            void enable(ivec4);
+            void enable(glm::ivec4);
             void enable(unsigned x, unsigned y, unsigned w, unsigned h);
             
             bool operator==(const Scissor&) const;
@@ -120,7 +120,7 @@ namespace SG
         Option<bool> smoothPoints;
         Option<CullFace> cullFace;
         Option<Blend> blend;
-        Option<ivec4> viewport;
+        Option<glm::ivec4> viewport;
         Option<Scissor> scissor;
         //Option<Stencil> stencil;
         Option<ColorMask> colorMask;

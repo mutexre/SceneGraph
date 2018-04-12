@@ -6,6 +6,8 @@
 #include <SceneGraph/SceneGraph.hpp>
 
 using namespace SG;
+using namespace std;
+using namespace glm;
 
 TextureMaterialRGBA::TextureMaterialRGBA(const shared_ptr<Context>& context)
  : Material(context)

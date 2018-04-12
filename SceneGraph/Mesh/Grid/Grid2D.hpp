@@ -7,24 +7,24 @@
 
 namespace SG::Grid2D
 {
-    void fillVertexAttributes(shared_ptr<Mesh>&,
-                              uvec2 dims = uvec2(1),
+    void fillVertexAttributes(std::shared_ptr<Mesh>&,
+                              glm::uvec2 dims = glm::uvec2(1),
                               bool verticallyFlipUVs = true);
 
-    void fillIndices(shared_ptr<Mesh>&,
+    void fillIndices(std::shared_ptr<Mesh>&,
                      PrimitivesType,
-                     uvec2 dims = uvec2(1));
+                     glm::uvec2 dims = glm::uvec2(1));
 
-    void make(shared_ptr<Mesh>&,
+    void make(std::shared_ptr<Mesh>&,
               PrimitivesType,
-              uvec2 dims = uvec2(1),
+              glm::uvec2 dims = glm::uvec2(1),
               bool verticallyFlipUVs = true);
     
-    void stroke(shared_ptr<Mesh>&,
-                uvec2 dims = uvec2(1),
+    void stroke(std::shared_ptr<Mesh>&,
+                glm::uvec2 dims = glm::uvec2(1),
                 bool verticallyFlipUVs = true);
     
-    void fill(shared_ptr<Mesh>&,
-              uvec2 dims = uvec2(1),
+    void fill(std::shared_ptr<Mesh>&,
+              glm::uvec2 dims = glm::uvec2(1),
               bool verticallyFlipUVs = true);
 }

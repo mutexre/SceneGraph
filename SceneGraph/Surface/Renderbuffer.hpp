@@ -8,7 +8,7 @@ namespace SG
     class Renderbuffer : public virtual Object
     {
     protected:
-        uvec2 size;
+        glm::uvec2 size;
         PixelFormat format;
     
     public:
@@ -16,7 +16,7 @@ namespace SG
         
         virtual void makeActive() = 0;
         
-        uvec2 getSize() const;
+        glm::uvec2 getSize() const;
         
         PixelFormat getFormat() const;
         void setFormat(PixelFormat);

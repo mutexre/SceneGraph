@@ -20,11 +20,11 @@ namespace SG
         Type type;
         unsigned group;
 
-        vec3 ambient  = { 0, 0, 0 };
-        vec3 diffuse  = { 1, 1, 1 };
-        vec3 specular = { 1, 1, 1 };
+        glm::vec3 ambient  = { 0, 0, 0 };
+        glm::vec3 diffuse  = { 1, 1, 1 };
+        glm::vec3 specular = { 1, 1, 1 };
 
-        vec3 direction;
+        glm::vec3 direction;
 
         struct {
             float exponent;
@@ -37,7 +37,7 @@ namespace SG
 
     public:
         Light();
-        Light(const string& name);
+        Light(const std::string& name);
 
         bool isEnabled() const;
         Light& setEnabled(bool = true);
@@ -48,18 +48,18 @@ namespace SG
         unsigned getGroup() const;
         Light& setGroup(unsigned g);
         
-        vec3 getAmbient() const;
-        Light& setAmbient(vec3);
+        glm::vec3 getAmbient() const;
+        Light& setAmbient(glm::vec3);
         Light& setAmbient(float, float, float);
         Light& setAmbient(float);
         
-        vec3 getDiffuse() const;
-        Light& setDiffuse(vec3);
+        glm::vec3 getDiffuse() const;
+        Light& setDiffuse(glm::vec3);
         Light& setDiffuse(float, float, float);
         Light& setDiffuse(float);
         
-        vec3 getSpecular() const;
-        Light& setSpecular(vec3);
+        glm::vec3 getSpecular() const;
+        Light& setSpecular(glm::vec3);
         Light& setSpecular(float, float, float);
         Light& setSpecular(float);
         
@@ -67,13 +67,13 @@ namespace SG
         Light& setAttenuation(unsigned, float);
         Light& setAttenuation(float, float, float);
 
-        vec3 getDirection() const;
-        Light& setDirection(vec3);
+        glm::vec3 getDirection() const;
+        Light& setDirection(glm::vec3);
         Light& setDirection(float, float, float);
         Light& setDirection(float);
 
-        void setOnGPU(int index, const shared_ptr<Program>&,
-                      const vec3& viewCoord,
-                      const vec3& direction);
+        void setOnGPU(int index, const std::shared_ptr<Program>&,
+                      const glm::vec3& viewCoord,
+                      const glm::vec3& direction);
     };
 }

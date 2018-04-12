@@ -8,8 +8,8 @@ namespace SG
     class TextureMaterial : public Material
     {
     protected:
-        shared_ptr<Texture> texture;
-        mat3 uvTransform { 1 };
+        std::shared_ptr<Texture> texture;
+        glm::mat3 uvTransform { 1 };
         bool uvTransformSynced;
 
     protected:
@@ -21,17 +21,17 @@ namespace SG
         void syncUvTransform();
 
     public:
-        TextureMaterial(const shared_ptr<Context>&);
+        TextureMaterial(const std::shared_ptr<Context>&);
         
-        TextureMaterial(const shared_ptr<Context>&,
-                        const shared_ptr<Program>&,
-                        const shared_ptr<Texture>&,
-                        mat3 uvTransform = mat3(1));
+        TextureMaterial(const std::shared_ptr<Context>&,
+                        const std::shared_ptr<Program>&,
+                        const std::shared_ptr<Texture>&,
+                        glm::mat3 uvTransform = glm::mat3(1));
 
-        shared_ptr<Texture>& getTexture();
-        TextureMaterial& setTexture(const shared_ptr<Texture>&);
+        std::shared_ptr<Texture>& getTexture();
+        TextureMaterial& setTexture(const std::shared_ptr<Texture>&);
         
-        const mat3& getUvTransform() const;
-        TextureMaterial& setUvTransform(const mat3&);
+        const glm::mat3& getUvTransform() const;
+        TextureMaterial& setUvTransform(const glm::mat3&);
     };
 }

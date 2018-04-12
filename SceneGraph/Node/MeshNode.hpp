@@ -8,24 +8,24 @@ namespace SG
     class MeshNode : public virtual Node
     {
     protected:
-        shared_ptr<Mesh> mesh;
-        shared_ptr<Material> material;
+        std::shared_ptr<Mesh> mesh;
+        std::shared_ptr<Material> material;
 
     protected:
-        virtual void draw(const shared_ptr<Scene>&,
-                          const shared_ptr<Camera>&) override;
+        virtual void draw(const std::shared_ptr<Scene>&,
+                          const std::shared_ptr<Camera>&) override;
 
     public:
         MeshNode();
         
-        MeshNode(const string& name,
-                 const shared_ptr<Mesh>& mesh = nullptr,
-                 const shared_ptr<Material>& material = nullptr);
+        MeshNode(const std::string& name,
+                 const std::shared_ptr<Mesh>& mesh = nullptr,
+                 const std::shared_ptr<Material>& material = nullptr);
         
-        const shared_ptr<Mesh>& getMesh() const;
-        MeshNode& setMesh(const shared_ptr<Mesh>&);
+        const std::shared_ptr<Mesh>& getMesh() const;
+        MeshNode& setMesh(const std::shared_ptr<Mesh>&);
         
-        const shared_ptr<Material>& getMaterial() const;
-        MeshNode& setMaterial(const shared_ptr<Material>&);
+        const std::shared_ptr<Material>& getMaterial() const;
+        MeshNode& setMaterial(const std::shared_ptr<Material>&);
     };
 }
