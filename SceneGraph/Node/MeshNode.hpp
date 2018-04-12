@@ -5,7 +5,7 @@
 
 namespace SG
 {
-    class MeshNode : public virtual Node
+    class MeshNode : public Node
     {
     protected:
         std::shared_ptr<Mesh> mesh;

@@ -5,7 +5,7 @@
 
 namespace SG
 {
-    class Mesh : public virtual Object
+    class Mesh : public Object
     {
     protected:
         CoordSystem coordSystem = CoordSystem::cartesian;

@@ -5,7 +5,7 @@
 
 namespace SG
 {
-    class Renderbuffer : public virtual Object
+    class Renderbuffer : public Object
     {
     protected:
         glm::uvec2 size;
@@ -20,11 +20,7 @@ namespace SG
         
         PixelFormat getFormat() const;
         void setFormat(PixelFormat);
-    };
-    
-    class OffScreenBuffer : public virtual Renderbuffer
-    {
-    public:
+
         virtual void allocStorage(int w, int h,
                                   PixelFormat = PixelFormat::rgba8,
                                   int samples = 1) = 0;

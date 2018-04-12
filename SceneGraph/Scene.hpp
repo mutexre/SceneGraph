@@ -5,7 +5,7 @@
 
 namespace SG
 {
-    class Scene : public virtual Object,
+    class Scene : public Object,
                   public std::enable_shared_from_this<Scene>
     {
         friend class MeshNode;

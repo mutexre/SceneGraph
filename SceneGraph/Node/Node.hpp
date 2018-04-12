@@ -5,7 +5,7 @@
 
 namespace SG
 {
-    class Node : public virtual Object,
+    class Node : public Object,
                  public std::enable_shared_from_this<Node>
     {
     public:

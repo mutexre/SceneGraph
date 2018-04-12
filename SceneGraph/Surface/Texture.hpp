@@ -5,7 +5,7 @@
 
 namespace SG
 {
-    class Texture : public virtual Object
+    class Texture : public Object
     {
     public:
         enum class Type {

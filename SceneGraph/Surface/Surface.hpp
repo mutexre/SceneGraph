@@ -5,7 +5,7 @@
 
 namespace SG
 {
-    class Surface : public virtual Object
+    class Surface : public Object
     {
     public:
         enum class AttachmentPoint {

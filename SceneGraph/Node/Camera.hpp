@@ -5,7 +5,7 @@
 
 namespace SG
 {
-    class Camera : public virtual Node
+    class Camera : public Node
     {
     public:
         enum class ProjectionType {

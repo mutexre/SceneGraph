@@ -61,7 +61,6 @@ namespace SG
         virtual std::shared_ptr<Texture> createTexture() = 0;
         virtual std::shared_ptr<Surface> createSurface() = 0;
         virtual std::shared_ptr<Renderbuffer> createRenderbuffer() = 0;
-        virtual std::shared_ptr<OffScreenBuffer> createOffScreenBuffer() = 0;
         
         virtual std::shared_ptr<Node> createNode(const std::string& name);
         virtual std::shared_ptr<MeshNode> createMeshNode(const std::string& name);

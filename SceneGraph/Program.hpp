@@ -5,7 +5,7 @@
 
 namespace SG
 {
-    class Program : public virtual Object
+    class Program : public Object
     {
         friend class Context;
         friend class Material;

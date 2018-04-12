@@ -5,7 +5,7 @@
 
 namespace SG
 {
-    class Light : public virtual Node
+    class Light : public Node
     {
     public:
         enum class Type : unsigned {

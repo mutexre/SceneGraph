@@ -7,7 +7,7 @@
 
 namespace SG
 {
-    class Material : public virtual Object
+    class Material : public Object
     {
     protected:
         std::shared_ptr<Context> context;
