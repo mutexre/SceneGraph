@@ -28,6 +28,7 @@
 		922D2E931EABFEDC00453248 /* Grid2D.hpp in Headers */ = {isa = PBXBuildFile; fileRef = 922D2E911EABFEDC00453248 /* Grid2D.hpp */; settings = {ATTRIBUTES = (Public, ); }; };
 		922D2E971EABFEFF00453248 /* Grid3D.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 922D2E951EABFEFF00453248 /* Grid3D.cpp */; };
 		922D2E981EABFEFF00453248 /* Grid3D.hpp in Headers */ = {isa = PBXBuildFile; fileRef = 922D2E961EABFEFF00453248 /* Grid3D.hpp */; settings = {ATTRIBUTES = (Public, ); }; };
+		926838ED21453E7300D02D09 /* stb.c in Sources */ = {isa = PBXBuildFile; fileRef = 92E46B391EA22995007ADAB1 /* stb.c */; settings = {COMPILER_FLAGS = "-fno-modules"; }; };
 		92D44D581F8A390E005204DB /* Cube.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 92E46B561EA22995007ADAB1 /* Cube.cpp */; };
 		92E46B891EA22995007ADAB1 /* Context.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 92E46B301EA22995007ADAB1 /* Context.cpp */; };
 		92E46B8B1EA22995007ADAB1 /* Context.hpp in Headers */ = {isa = PBXBuildFile; fileRef = 92E46B311EA22995007ADAB1 /* Context.hpp */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -37,7 +38,6 @@
 		92E46B931EA22995007ADAB1 /* ImageStack.hpp in Headers */ = {isa = PBXBuildFile; fileRef = 92E46B361EA22995007ADAB1 /* ImageStack.hpp */; settings = {ATTRIBUTES = (Public, ); }; };
 		92E46B951EA22995007ADAB1 /* ImagePyramid.hpp in Headers */ = {isa = PBXBuildFile; fileRef = 92E46B371EA22995007ADAB1 /* ImagePyramid.hpp */; settings = {ATTRIBUTES = (Public, ); }; };
 		92E46B971EA22995007ADAB1 /* ImagePyramidDefinition.hpp in Headers */ = {isa = PBXBuildFile; fileRef = 92E46B381EA22995007ADAB1 /* ImagePyramidDefinition.hpp */; settings = {ATTRIBUTES = (Public, ); }; };
-		92E46B991EA22995007ADAB1 /* STB.c in Sources */ = {isa = PBXBuildFile; fileRef = 92E46B391EA22995007ADAB1 /* STB.c */; };
 		92E46B9B1EA22995007ADAB1 /* Assimp.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 92E46B3C1EA22995007ADAB1 /* Assimp.cpp */; };
 		92E46B9D1EA22995007ADAB1 /* Assimp.hpp in Headers */ = {isa = PBXBuildFile; fileRef = 92E46B3D1EA22995007ADAB1 /* Assimp.hpp */; settings = {ATTRIBUTES = (Public, ); }; };
 		92E46BAB1EA22995007ADAB1 /* Log.hpp in Headers */ = {isa = PBXBuildFile; fileRef = 92E46B451EA22995007ADAB1 /* Log.hpp */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -124,7 +124,7 @@
 		92E46B361EA22995007ADAB1 /* ImageStack.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = ImageStack.hpp; sourceTree = "<group>"; };
 		92E46B371EA22995007ADAB1 /* ImagePyramid.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = ImagePyramid.hpp; sourceTree = "<group>"; };
 		92E46B381EA22995007ADAB1 /* ImagePyramidDefinition.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = ImagePyramidDefinition.hpp; sourceTree = "<group>"; };
-		92E46B391EA22995007ADAB1 /* STB.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = STB.c; sourceTree = "<group>"; };
+		92E46B391EA22995007ADAB1 /* stb.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = stb.c; sourceTree = "<group>"; };
 		92E46B3C1EA22995007ADAB1 /* Assimp.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Assimp.cpp; sourceTree = "<group>"; };
 		92E46B3D1EA22995007ADAB1 /* Assimp.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = Assimp.hpp; sourceTree = "<group>"; };
 		92E46B3F1EA22995007ADAB1 /* FBX.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = FBX.cpp; sourceTree = "<group>"; };
@@ -300,7 +300,7 @@
 				92E46B351EA22995007ADAB1 /* ImageStack.cpp */,
 				92E46B371EA22995007ADAB1 /* ImagePyramid.hpp */,
 				92E46B381EA22995007ADAB1 /* ImagePyramidDefinition.hpp */,
-				92E46B391EA22995007ADAB1 /* STB.c */,
+				92E46B391EA22995007ADAB1 /* stb.c */,
 			);
 			name = Image;
 			path = SceneGraph/Image;
@@ -553,6 +553,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				926838ED21453E7300D02D09 /* stb.c in Sources */,
 				92E46B891EA22995007ADAB1 /* Context.cpp in Sources */,
 				92E46BF71EA22995007ADAB1 /* Object.cpp in Sources */,
 				92E46BFF1EA22995007ADAB1 /* Scene.cpp in Sources */,
@@ -583,7 +584,6 @@
 				92E46BEF1EA22995007ADAB1 /* Text.cpp in Sources */,
 				92E46B8D1EA22995007ADAB1 /* Image.cpp in Sources */,
 				92E46B911EA22995007ADAB1 /* ImageStack.cpp in Sources */,
-				92E46B991EA22995007ADAB1 /* STB.c in Sources */,
 				92E46C0B1EA22995007ADAB1 /* Settings.cpp in Sources */,
 				92E46C071EA22995007ADAB1 /* CullFace.cpp in Sources */,
 				92E46C051EA22995007ADAB1 /* Blend.cpp in Sources */,
